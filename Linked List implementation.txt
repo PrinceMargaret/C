@@ -1,0 +1,128 @@
+ - for implement linked List in C & C++, 1st we need to design a struct type with Node name
+ Array is the collection of similar kind of data items, that share a common name. & linked also the collection of similar
+ of data items that share a common name, but major diff in Array & linked List, in array we can't add / remove the elements
+ in Runtime means we can't change the size of array in runtime bcos array is the example of compile time memory allocation.
+ but LinkedList is the example of dynamic memory allocation memory allocation. 
+
+struct Node
+{
+  int x; // for node value
+  struct Node *next; // for hold the ref of next node of same type.
+};
+
+2nd - now design struct type variable for manage the Linked List
+
+    struct Node *fst = NULL, *curr, *tmp,pptr; 
+
+      fst - for hold the ref of 1st node
+      curr - for hold the ref of current node
+      tmp - hold the tmp node for add new node with LIFO & FIFO method.
+      pptr - for hold the ref of prev Node. 
+  
+3rd - now add new Node with LIFO method - 
+
+   void addFirst()
+   {
+       tmp = (struct Node *) malloc(sizeof(tmp));
+       printf("\n\n\n Plz Enter Node Value : ");
+       scanf("%d",&tmp->x); // enter value for node with runtime input
+       tmp->next = fst;
+       fst = tmp;
+       printf("\n\n Node Successfully Inserted...");
+   }   
+   void addLast()
+   {
+       tmp = (struct Node *) malloc(sizeof(tmp));
+       printf("\n\n\n Plz Enter Node Value : ");
+       scanf("%d",&tmp->x); // enter value for node with runtime input
+       tmp->next = NULL;
+       if(fst==null)
+          fst = tmp;
+       else
+       {
+          curr = fst;
+          while(curr->next!=NULL) // loop for jump on last node
+             curr = curr->next; 
+          curr->next = tmp;
+       } 
+       printf("\n\n Node Successfully Inserted...");
+   }   
+   void disp()
+   {
+      if(fst==NULL)
+        printf("\n\n\n Sorry ur List is Empty.");
+      else
+      {
+        printf("\n\n\n  Elements in List r - ");
+        curr = fst;
+        while(curr!=NULL)
+        {
+           printf("%d, ",curr->x);
+           curr = curr->next;
+        }
+      }
+   }
+   void del()
+   {
+       int n,flag = 0; 
+       if(fst==NULL)
+          printf("\n\n\n Sorry ur List is Empty... ");
+       else
+       {
+         disp();
+         printf("\n\n\n Plz Enter Node value for delete : ");
+         scanf("%d",&n);
+         pptr = curr = fst;
+         while(curr!=NULL) // while list is not empty.
+         {
+            if(n==curr->x) // if node exist.
+            {
+               if(fst==curr) // if selected node is the 1st Node
+                  fst = curr->next;
+               else // if selected node is the mid or last node.
+                  pptr->next = curr->next;
+               free(curr);
+               flag = 1;
+               break;
+            }
+            pptr = curr;
+            curr = curr->next;
+         }
+         if(flag)
+           printf("\n\n Node Successfully Deleted.");
+         else
+           printf("\n\n Sorry Node not found...");
+       }
+   }   
+   void addMid()
+   {
+       int n
+       if(fst==NULL)
+          printf("\n\n\n Sorry ur List is Empty... ");
+       else
+       {
+         disp();
+         printf("\n\n\n Plz Enter Node value for add new Node just after that particular Node : ");
+         scanf("%d",&n);
+         curr = fst;
+         while(curr!=NULL) // while list is not empty.
+         {
+            if(n==curr->x) // if node exist.
+            {
+               tmp = (struct Node *)malloc(sizeof(tmp));
+               printf("Plz Enter Node value : ");
+               scanf("%d",&tmp->x);
+               tmp->next = curr->next;
+               curr->next = tmp;
+               break;
+            }
+            curr = curr->next;
+         }
+         if(flag)
+           printf("\n\n Node Successfully Deleted.");
+         else
+           printf("\n\n Sorry Node not found...");
+       }
+   }
+
+ 

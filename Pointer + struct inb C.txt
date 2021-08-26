@@ -1,0 +1,219 @@
+  Pointer -
+
+  Dynamic memory allocation in 
+
+  C - in C language for dynamic memory allocation we have calloc() , malloc(), realloc() & free() function
+          malloc() & calloc() - for memory allocation
+          realloc() - for memory reallocation
+          free() - for release the memory.
+  C++ - we can have new & delete operators. 
+
+  Java -  we have only new operation for memory allocation, for remove memory we have no method - bcos remove Garbage collector.
+          finalize() + gc() - for immediate memory deallocation. 
+ 
+
+  Q- what is the return type of calloc() + malloc() + realloc() function - return type of all 3 functions r void pointer,
+     for that we need to type cast that according to own need. 
+
+                   malloc() 					calloc()
+   * with one argument - size of memory           * with arguments - not of elements, size of each element.
+   * default initialize with gargabe              * default initialized with 0 
+   * use for single dim memory allocation.        * use for double dim memory allocation
+   * Major Use                                    * Minor use - no use
+
+  ** bcos all Data structure depends on malloc() function.
+
+  DS - Mast - LinkedList(single & double - with all operations) + Queue + stack + sorting also
+
+ realloc() - for memory reallocation, it internally call the free() & malloc() function   
+
+       int *p; 
+       p = (int *)malloc(sizeof(int)*5); means - 2 * 5 = 10 bytes memory allocation karo & use int pointer me cast karke
+                                 pe do de do - p ke inside 2 - 2 ke 5 pockets design hua - 5 contigious block design hua.
+               now we can store 5 elements/value in p pointer var. 
+
+   now we want to store 10 elements of int type in p var, for that we need to reallocate the size of p with realloc() function
+
+     p = (int *) realloc(sizeof(int)*10);  means - 2 * 10 = 20 bytes memory allocate hua, int pointer me cast karo,
+                                           size of int - 2 bytes - 2 - 2 bytes ke 10 blocks design hua
+          or
+     free(p); - release the memory of p.
+     p = (int *)malloc(sizeof(int)*10); means - 2 * 10 = 20 bytes memory allocation karo & use int pointer me cast karke
+                                 pe do de do - p ke inside 2 - 2 ke 10 pockets design hua - 10 contigious block design hua.
+ 
+  for memory deallocation we have - free() function. 
+
+    free(p);
+
+ in C++ -
+    
+   int *p; 
+   p = new int(10); - memory allocation for 10 elements. 
+   delete p;  - memory deallocation.
+
+datatypes - primitive type - int, char, float, double, long
+            composite type - array, structure , union & enum (choice base - set - weekdays / month name / boolean )
+   
+  Array - group of similar kind of data items that share a common name. 
+  structure & union - both r the user define composite data type, that share a common name,. structure is the major part
+            if C programming bcos whole data structure & file handling depends on structure concept. 
+
+ both r the user define composite data type, but there is one diff b/w both, in structure memory allocate for all elements,
+ but in union memory allocation only for largest size member/variable other  remaining element share the same memory
+
+  		 structure 					union
+   struct Student                                          union Student
+   {                                                       {
+      int roll;      - 2                                         int roll;      - 2 bytes
+      char name[10]; - 10                                        char name[10]; - 10 bytes
+      int marks;     - 2                                         int marks;     - 2 bytes
+   };              -------                                 };                  --------
+                      14 bytes                                      memory allocate only for 10 bytes other
+                                                                    remaining elements share the same memory
+
+  union Student s;
+  s.roll = 1001;
+  s.name = "Aman Kr"
+  s.marks = 867;       
+
+  print - s.roll;     -  867 
+  print - s.name;     - ^#an Kr
+  print - s.marks;    - 867
+
+ ** what is need of union - when we need to design multiple variables but want to work with less memory for that we can use
+    union. Live example in System - Keyboard program & Mouse programming - Live example of union.
+   
+      keyboard - 104 key - but at a time only 1 key press, then memory allocation for all keys or for one key - one key
+          combination of key - ctrl + s / alt + s /  wrong combination -  s + ctrl / s + alt 
+      mouse - in mouse we have 3 button but at a time only one button pressed memory allocation only for one button.
+
+ C++ - C ka next step - one increment in C. C ka next version, C++ also a kind of procedural language, but support the
+       OOPs concept - C++ - OOPs Supported Language - bcos support the OOPs concept not depends on that. in C++ we can 
+       we can design any application or program without using class & object. 
+
+  Q- what is diff b/w C & C++ structure.
+
+			C Structure                       C++ Structure
+ * we can't design function in C Structure.      * but in C++ structure we can design functions.
+ * we can't use access modifiers in C structure  * we can use access modifier in C++ structure - private, protected & public
+ * need of type def                              * no need of type def
+   for design structure type var - 
+      struct Student s;                              Student s; 
+
+
+                        C++ Structure                     C++ class.
+  * default access modifier(members) - public        * default access modifier - private
+  * not support the OOPs concept                     * Support OOps concept 
+  * Stored in stack memory - fast                    * Store in heap memory memory - slow. 
+
+  All Data Structure + File Handling always with structure - bcos structure fast hota hai - stored in stack memory.
+
+
+   A o; - in C++
+   A o = new A(); - in Java , o.disp() - means A class disp calling bcos o the ref of A class
+   A n; - normal object
+   A *p; - pointer object 
+
+   p = &n; - p hold the address of n.
+   p->disp(); - p ne jiska ref hold kiya hai(means n ka) inside that ref disp ko call karo. 
+
+_______________________________________________________
+void main()
+{
+   int *p,i;
+   clrscr();
+//   p = (int *)(calloc(5,sizeof(int)));
+   p = (int *)malloc(sizeof(int)*10); // memory allocate for pointer var
+  // loop for input
+   for(i=0;i<10;i++)
+   {
+     printf("Enter value for p[%d] : ",i);
+     scanf("%d",&p[i]);
+   }
+   for(i=0;i<10;i++)
+     printf("%d, ",p[i]);
+   printf("\n------------------\n");
+   for(i=0;i<10;i++)
+     printf("%d, ",*(p+i));
+   printf("\n------------------\n");
+   for(i=0;i<10;i++)
+     printf("%d, ",i[p]);
+   free(p); // memory deallocate for p.
+   getch();
+}
+________________________________________________________
+
+// realloc example
+void main()
+{
+   char *ar;
+   int *a;
+   clrscr();
+   ar = (char *)malloc(50);
+   strcpy(ar,"Hi Friends, I am Aman Kumar.");
+   printf("%s\n",ar);
+   ar = (char *)realloc(150);
+   strcpy(ar,"I m from HIET College NH24 Ghaziabad Uttar Pradesh - 201002");
+   printf("%s\n",ar);
+   ar = (char *)realloc(20); // internally it call - free(ar); ar = (char*) malloc(150);
+   strcpy(ar,"Thanks & Regards.");
+   printf("%s\n",ar);
+   ar = (char *)realloc(10);
+   strcpy(ar,"Aman Kr.");
+   printf("%s\n",ar);
+   free(ar); // release the memory of ar.
+   getch();
+}
+__________________________________________________________
+
+union Student
+{
+  int roll;
+  int marks;
+  char name[10];
+}s;
+
+void main()
+{
+   clrscr();
+   printf("Plz Enter roll, name & marks : ");
+   scanf("%d %s %d",&s.roll,s.name,&s.marks);
+   printf("\n\n Details r - %d , %s  , %d",s.roll,s.name,s.marks);
+   getch();
+}
+
+ :: - 
+
+class A
+{
+   public : 
+    A(); 
+    void disp();
+    static void show() { cout<<"I m inside show method of A class" ; }
+};
+A::A() // class memory definition define outside the class members. 
+{
+  cout<<"I m inside A class Constructor..."
+}
+void A::disp()
+{
+   cout<<"I m inside A class disp..";
+}
+
+void main()
+{
+   A::show();   // scope resolution operator use with call static members outside the class body without creating object
+
+}
+
+ DS - Single Linked - with all operation - double linked list with all operations. 
+
+
+
+
+
+
+
+
+
+

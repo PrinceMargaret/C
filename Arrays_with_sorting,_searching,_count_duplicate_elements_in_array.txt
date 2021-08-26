@@ -1,0 +1,408 @@
+ Major Questions on Arrays - in Written & interview. - 
+
+ Arrays - Array is the collection of similar kind of data items that share a common name. 
+
+  Adv - arrays r use for memory management.  we want to design 100 values store
+        1 - int a1,a2,a3 - a100; - time taking process - memory allocation for 100 variable inside diff - diff block + performence
+        2 - int ar[100]; -- array design for 100 elements - 100 * 2 = 200 Bytes memory allocation - single location.
+             values stored at 0 to size-1  , array design - 100 elements - 0 to 99
+              1st element - ar[0]; - pocket
+              last element - ar[99];  - pocket
+  
+  ** what is the drawback of array ?
+      - static memory allocation. - at compile time - compile time memory allocation is the major problem with array.
+
+   * array is the example for contiguous block memory allocation , int ar[5]; - 2 2 bytes ke 5 diff - diff block design honge.
+
+ how to design array - 
+
+     int ar[] = {10,20,30,40,50}; - array declare + initialized   
+
+     int ar[10]; - array declare 
+
+-- we want to store 10 elements in array as Runtime input & display all.
+
+#define MAX 10  - design global variable for manage the array inputs + output + searching + sorting.
+
+   int ar[MAX],i;   
+   clrscr();
+   for(i=0;i<MAX;i++) // loop from 0 to MAX - 1 (0 - 9)
+   {
+      printf("Enter value for ar[%d] : ",i);   // output - Enter value for ar[0] : to ar[9] : 
+      scanf("%d",&ar[i]); // input value for ar[0] to ar[9] - input values - 10 to 100 
+   }
+// for display array elements 
+   for(i=0;i<MAX;i++)
+      printf("ar[%d] = %d",i,ar[i]);      // output - ar[0] = 10 , ar[1] = 20, ar[2] = 30 , ar[9] - 100 
+___________________________________________________________________
+
+// we have 10 elements array with run time inputs - now we want to find out 1st & 2nd highest value from array.  
+// 10, 50, 20, 90, 60, 30, 40, 80, 70, 100, 1st highest value - 100 & 2nd highest value 90  ? 
+//  first = second = ar[0]; 
+#define MAX 10
+void main()
+{
+   int ar[MAX],i,first,second;
+   clrscr();
+   for(i=0;i<MAX;i++)
+   {
+      printf("Enter value for ar[%d] : ",i);
+      scanf("%d",&ar[i]);
+   }
+   first = second = ar[0];
+   for(i=1;i<MAX;i++)
+   {
+      if(first<ar[i])
+      {
+	 second = first;
+	 first = ar[i];
+      }
+   }
+   printf("\n1st highest number is - %d",first);
+   printf("\n2nd highest number is - %d",second);
+   getch();
+}
+
+// selection sort + bubble sort + insertion sort.   bubble - if(ar[j] > ar[j+1]) , selection - if(ar[i] > ar[j]) 
+// for bubble sort
+   for(i=0;i<MAX-1;i++) // MAX - 1 bcos last element ko sort nahi karna hai wo prev wale ne sort kar diya. 
+   {
+      for(j=0;j<MAX-i-1;j++)
+      {
+	 if(ar[j] > ar[j+1]) // swaping
+	 {
+	   c = ar[j];
+	   ar[j] = ar[j+1];
+	   ar[j+1] = c;
+	 }
+      }
+   }
+
+// Selection sort - sorting
+   for(i=0;i<MAX-1;i++)
+   {
+      for(j=i+1;j < MAX;j++)
+      {
+	if(ar[i] > ar[j]) // swaping. 
+	{
+	   n = ar[i];
+	   ar[i] = ar[j];
+	   ar[j] = n;
+	}
+      }
+   }
+
+// linear Search(slow process) + Binary Search (fast - all internal searching in System - with binary search)
+// condition for binary search array must be sorted. 
+
+ before perform binary searching we need to use sorting algo also, but if array already sort then no need of sorting algo. 
+ vars - min/low  = 0 , high = MAX - 1 , mid = (low+high)/2 , if(ar[mid] > n) else if(ar[mid]<n) else value exist at index of mid.
+
+   printf("Enter value for search : ");
+   scanf("%d",&n);
+   low = 0;
+   high = MAX-1;
+   while(low<=high)
+   {
+     mid = (low+high)/2;
+     printf("low = %d, high = %d, mid = %d\n",low,high,mid);
+     if(n > ar[mid])
+       low = mid+1;
+     else if(n < ar[mid])
+       high = mid - 1;
+     else
+     {
+       printf("\nvalue exist on ar[%d] index\n",mid);
+       flag = 1;
+       break;
+     }
+  }
+_________________________________________________________
+
+// we want to input 10 values & display all values - with arrays - accept only  unique values
+
+  gotoxy(x,y); - for display/print on selected/particular position , x - for cols - max cols in single row - 80
+                 y - rows, max rows in a page - 24, max char in a page = 80 * 24 = 1920 chars in a page.  
+  goto n; - goto label / pointer; - control jump of n label/pointer, but java not support goto pointer/label concept
+            but we can assign loop label/name same as goto pointer concept of C & C++. for improve the loop performence.
+
+   for(i=0;i<MAX;i++) // loop for values input
+   {
+   k:   
+      printf("Enter value for ar[%d] : ",i);
+      scanf("%d",&ar[i]);
+      for(j = 0;j < i; j++)
+      {
+	 if(ar[i]==ar[j]) // if value matched then msg display & control jump on k label. 
+	 {
+	    printf("Sorry value already exist in array, re-enter Plz\n");
+	    goto k; // control jump to k label. 
+	 }
+      }
+   }
+_______________________________________________________
+
+// we want to count duplicate elements in a array. - repeated elements kitne hai. 
+
+   int ctr = 0; 
+   for(i=0;i<MAX-1;i++)
+   {
+      for(j=i+1;j<MAX;j++)
+      {
+	if(ar[i]==ar[j])
+	{
+          ctr++;
+	  break; // break the inner loop. 
+	}
+      }
+   }
+   printf("\nno of duplicate elements r - %d",ctr);
+   getch();
+}
+__________________________________________________________
+
+  always wortk with free mind - implementation / logic use - input(1) -> process <-  output(2)
+
+// count duplicate elements in array - we have 10 element of array - now we want to repeated elements (0 to 9)
+// 1 ,2, 1, 3, 2, 1, 2, 4, 1, 4   - 1 repeat = 4 times , 2 - 3 times , 4 - 2 Times. 
+
+#define MAX 10
+void main()
+{
+   int arr[MAX],ar[MAX],i,j;
+   clrscr();
+   for(i=0;i<MAX;i++) // values runtime input
+   {
+      printf("Enter value for ar[%d] : ",i);
+      scanf("%d",&ar[i]);
+   }
+   for(i=0;i<MAX;i++)  // initialize array element with 0 - contain the repeating elements  
+     arr[i] = 0;
+   for(i=0;i<MAX;i++)
+   {
+      for(j=i+1;j<MAX;j++)
+      {
+	if(ar[i]==ar[j])
+	{
+	  arr[ar[i]]++;  // 0, 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 
+	  break;
+	}
+      }
+   }
+   // print repeated elements
+   for(int i=0<MAX;i++)
+     printf("%d repeat - %d times\n",i,arr[i]); 
+
+- count repeated element values in array excluding range - 0 to n - counter / index. with / outsorting.  
+- count no of repeated char in String. - jo more then one time
+    sakshi says, I m a good girl. 
+
+ input decimal number & convert into binary - / 2 + mod 2  & value store kar lo array ke inside & display array in reverse order. 
+____________________________________________________
+
+// we want to design an Array with 10 elements - Inputs 10 values from user & display.
+// want to sort elements in accending order with bubble sort
+#define MAX 5  // global declare, can use any where in whole program
+void main()
+{
+   int ar[MAX],c,i,j;
+   clrscr();
+   for(i=0;i<MAX;i++)
+   {
+      printf("Enter value for ar[%d] : ",i);   // output - Enter value for ar[0] : to ar[9] :
+      scanf("%d",&ar[i]); // input value for ar[0] to ar[9]
+   }
+   // for bubble sort
+   for(i=0;i<MAX-1;i++)
+   {
+      for(j=0;j<MAX-i-1;j++)
+      {
+	 if(ar[j] > ar[j+1])
+	 {
+	   c = ar[j];
+	   ar[j] = ar[j+1];
+	   ar[j+1] = c;
+	 }
+      }
+      printf("\n when i = %d - ",i);
+      for(j=0;j<MAX;j++)
+	printf("%d, ",ar[j]);
+      getch();
+   }
+   for(i=0;i<MAX;i++)   // loop for displa array elements
+     printf("\n%d",ar[i]);
+   getch();
+
+}
+___________________________________________________
+
+// binary search
+#define MAX 10
+void main()
+{
+   int ar[MAX],n,i,j,low,high,mid,flag = 0;
+   clrscr();
+   for(i=0;i<MAX;i++)
+   {
+      printf("Enter value for ar[%d] : ",i);
+      scanf("%d",&ar[i]);
+   }
+   // Selection sort - sorting
+   for(i=0;i<MAX-1;i++)
+   {
+      for(j=i+1;j<MAX;j++)
+      {
+	if(ar[i] > ar[j])
+	{
+	   n = ar[i];
+	   ar[i] = ar[j];
+	   ar[j] = n;
+	}
+      }
+   }
+   printf("Enter value for search : ");
+   scanf("%d",&n);
+   low = 0;
+   high = MAX-1;
+   while(low<=high)
+   {
+     mid = (low+high)/2;
+     printf("low = %d, high = %d, mid = %d\n",low,high,mid);
+     if(n>ar[mid])
+       low = mid+1;
+     else if(n<ar[mid])
+       high = mid - 1;
+     else
+     {
+       printf("\nvalue exist on ar[%d] index\n",mid);
+       flag = 1;
+       break;
+     }
+   }
+   printf("\nArray elements r - ");
+   for(i=0;i<MAX;i++)
+     printf("%d , ",ar[i]);
+   if(!flag)
+     printf("\nSorry value not found......\n");
+   getch();
+}
+_______________________________________________________
+
+// we want to input 10 values & display all values - with arrays - accept only  unique values
+#define MAX 5
+void main()
+{
+   int i,j,c=0,n,ar[MAX];
+   clrscr();
+   for(i=0;i<MAX;i++) // loop for values input
+   {
+   k:
+      printf("Enter value for ar[%d] : ",i);
+      scanf("%d",&ar[i]);
+      for(j=0;j<i;j++)
+      {
+	 if(ar[i]==ar[j])
+	 {
+	    printf("Sorry value already exist in array, re-enter Plz\n");
+	    goto k;
+	 }
+      }
+   }
+   printf("\n\nEnter value for Search : ");
+   scanf("%d",&n);
+   for(i=0;i<MAX;i++)
+   {
+     if(n==ar[i])
+     {
+       c = 1;
+       printf("\nValue exist at index ar[%d]\n",i);
+       break;
+     }
+   }
+   if(c==0)
+     printf("Sorry value not exist\n");
+   for(i=0;i<MAX;i++) // loop for display
+      printf("\n%d",ar[i]);
+   getch();
+
+}
+____________________________________________________
+
+// count duplicate elements in array
+#define MAX 10
+void main()
+{
+   int ar[MAX],i,j,ctr=0;
+   clrscr();
+   for(i=0;i<MAX;i++)
+   {
+      printf("Enter value for ar[%d] : ",i);
+      scanf("%d",&ar[i]);
+   }
+   for(i=0;i<MAX;i++)
+   {
+      for(j=i+1;j<MAX;j++)
+      {
+	if(ar[i]==ar[j])
+	{
+	  ctr++;
+	  break;
+	}
+      }
+   }
+   printf("\nno of duplicate elements r - %d",ctr);
+   getch();
+}
+__________________________________________________________
+
+// count duplicate elements in array
+#define MAX 10
+void main()
+{
+   int arr[MAX],ar[MAX],i,j,ctr=0;
+   clrscr();
+   for(i=0;i<MAX;i++)
+   {
+      printf("Enter value for ar[%d] : ",i);
+      scanf("%d",&ar[i]);
+   }
+   for(i=0;i<MAX;i++)  // initialize array element with 0
+     arr[i] = 0;
+   for(i=0;i<MAX;i++)
+   {
+      for(j=i+1;j<MAX;j++)
+      {
+	if(ar[i]==ar[j])
+	{
+	  arr[ar[i]]++;
+	  break;
+	}
+      }
+   }
+   for(i=0;i<MAX;i++)
+     printf("arr[%d] = %d\n",i,arr[i]);
+   getch();
+}
+
+______________________________________________
+
+// Enter one Number & display in Binary
+#define MAX 10
+void main()
+{
+   int ar[MAX],n,x,i,ctr=0;
+   clrscr();
+   printf("Enter any Number : ");
+   scanf("%d",&n);
+   while(n>0)
+   {
+      x = n % 2;
+      n = n / 2;
+      ar[ctr++] = x;
+   }
+   printf("Number in Binary - ");
+   for(i=ctr-1;i>=0;i--)
+     printf("%d",ar[i]);
+   getch();
+}
+___________________________________________________

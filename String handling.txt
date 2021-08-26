@@ -1,0 +1,279 @@
+String Handling & Collection Framework - both r the Major Topic for Interview & project design. 
+   
+ String handling in C & C++ - 
+
+   char - single char - it can store only single char  
+             char c = 'A';    char c;   c = getch();  - contain/store only one char.  
+   String - group of chars. for implement/use string in C & C++, we have concept of char array.
+      means C & C++ ke inside string store karne ke liye alag se koi data type nahi, for that U have 
+      only concept of char array. but in java we have String class for store String, String is a kind of Immutable & final
+      class & stored inside java.lang package. 
+   
+     char nm[10]; - we can store 10 chars string. - Max 10 chars string.
+                      9 chars + 1 string terminate - null char - '\0'  
+
+ char ar[10];    strcpy(ar,"Nishant");    ar = "Nishant";     / char ar[10];   ar = "Nishant"; - wrong way. 
+  
+ ar[0] = 'N' ;
+ ar[1] = 'i' ;
+ ar[2] = 's' ;
+ ar[3] = 'h' ;
+ ar[4] = 'a' ;
+ ar[5] = 'n' ;
+ ar[6] = 't' ;
+ ar[7] = '\0' ; - null char, string terminator char. 
+
+ 
+       nm = "Manoj";  - wrong way, we can't initialize String with = operator , for that we need to
+                        strcpy() function.
+
+       strcpy(nm,"Manoj");  nm = "Manoj";
+   
+    - in java we can use = operator for String initialize -  nm = "Manoj";
+
+String Handling in C & C++ - 
+
+  for string handling in C & C++ we have string.h header file - we have some functions in string.h 
+  header file for String handling - 
+
+  ** all string handling functions prefix with str word - strcat / strrev / strcpy / strcmp / strcmpi 
+     / strlen / strupr / strlwr / strncmp / strncmpi() - 10 functions
+
+   ** problem with - without using any inbuild/pre define function. (80-90% cases)
+
+ 1st -  strcpy(str1,str2) - for string copy.
+
+     char nm[10]; 
+     nm = "Aman"; - wrong way in C & C++.
+     strcpy(nm,"Aman");  now nm is = "Aman"; 
+
+     but in java we can use = operator for string initialize. 
+
+     String s; 
+     s = "Anand"; - valid in java, means no need of any function.
+
+  we want to copy string without using any function.
+
+    char arr[10];
+    char ar[] = "Nishant";  gets(ar); / scanf("%s",ar); - for run time input.
+
+     ar = "Nishant"; 
+ 
+  - for String copy without using strcpy() function - 
+
+    int ctr = 0;
+    while(ar[ctr] != '\0')
+    {
+       arr[ctr] =  ar[ctr]; 
+       ctr ++;
+    }
+    arr[ctr] = '\0';
+
+ 2nd - strcat(str1,str2) - for String concat
+        int a = 10;  - WE WANT TO ADD 5 VALUE IN a - 
+        a = a + 5; / a += 5;   
+        a = 15; 
+
+    nm = "Anand";   - we want to add kumar value in nm 
+    strcat(nm," Kumar"); -   nm = "Anand Kumar";
+
+    for concat string in java we can use + or += operator. 
+    
+     String nm = "Anand"; 
+     nm = nm + " Kumar";  /   nm += " Kumar";
+
+     nm = "Anand Kumar";
+  
+  in java - + or += - operator both r overload means - if use with String - concat, if number then - addition. 
+           ** java not support the operator overloading concept, but + & += operator both r pre overloaded.
+
+ 3rd - strupr(str); - to convert string into upper case
+
+        in java we have - toUpperCase();
+  
+     nm = "manoj";  -  convert into upper case - 
+       strupr(nm);   nm = "MANOJ"; 
+
+    java - String s = "Manoj"; 
+           s = s.toUpperCase();    s = "MANOJ";
+   
+ 4th - strlwr(str); - to convert string into lower case
+        in java we have - toLowerCase();
+
+    nm = "Anand";  / nm = "ANAND";
+    in C & C++ -  strlwr(nm); 
+    java -        nm = nm.toLowerCase();
+
+       nm = "anand";
+
+  ASCII code -  A - 65 to Z - 90  
+                a - 97 to z - 122
+                   ----------------- 
+                    32        32 
+   lower to upper cast -  -32 / upper to lower case casting - +32  0 in ASCII code.
+
+// to convert string into upper case & find out the length of String without using strlen function.
+void main()
+{
+  int ctr=0;
+  char ar[20];
+  clrscr();
+  printf("Plz enter ur Name : ");
+  gets(ar);                 // input Abhay Pratap 
+  printf("Welcome %s",ar); // same as Input value
+  while(ar[ctr]!='\0') // while string not end - \0 - null char - string not empty.  
+  {
+    if(ar[ctr]>='a' && ar[ctr]<='z')  // agar small char,  a - 97 , z - 122 / A-65 to Z - 90
+       or
+    if(ar[ctr]>=97 && ar[ctr]<=122)  // agar small char,  a - 97 ,z - 122 / A-65 to Z - 90
+      ar[ctr] = ar[ctr]-32;  // a - 97 , A - 65 = 32
+    // if(ar[ctr]>='A' && ar[ctr]<='Z')  // agar capital char,  a - 97 ,z - 122 / A-65 to Z - 90
+    //  ar[ctr] = ar[ctr]+32;  // a- 97 , A - 65 = 32
+    ctr++;
+  }
+  printf("\nLength of String is - %d",ctr);
+  printf("\nWelcome %s",ar);
+  getch();
+}
+
+ 5th - strrev() - for string reverse, but no method in java String class, but in StringBuffer we have. 
+
+     nm = "Anand";
+     strrev(nm);     nm = "dnanA"; 
+     nm = "Manoj123"; strrev(nm);   nm = "321jonaM";
+
+  String reverse without any function
+
+  ctr = 0;
+  while(ar[ctr]!='\0') // loop for count String length.
+     ctr ++; 
+
+  for(i=0,j=ctr-1;i<ctr;i++,j--); // loop for String reverse 
+    arr[i] = ar[j];
+  arr[i]= '\0'; 
+
+  ar = Abhay
+                              i = 0    j = 4 
+  ar[0] = 'A';   ctr = 1     arr[i=0] = ar[j = 4]= 'y'
+  ar[1] = 'b';   ctr = 2     arr[i=1] = ar[j = 3]= 'a'
+  ar[2] = 'h';   ctr = 3     arr[i=2] = ar[j = 2]= 'h'
+  ar[3] = 'a';   ctr = 4     arr[i=3] = ar[j = 1]= 'b'
+  ar[4] = 'y';   ctr = 5     arr[i=4] = ar[j = 0]= 'A'
+  ar[5] = '\0';  ctr = 5     arr[i=5] = '\0'; 
+
+   
+ 6th - int strlen(str); - return the length of String. in java we have length() method
+
+       nm = "Anand"; 
+       x = strlen(nm);   x = 5 - C & C++ 
+       x = nm.length();  x = 5 - java 
+
+ // findout length of String in C without using strlen function. 
+
+  int ctr = 0;
+  while(ar[ctr]!='\0') // string not empty - ctr increment karo. 
+    ctr++;
+  printf("String length is - %d",ctr); 
+
+ for findout length in java - 
+  
+   1.  length - keyword - find out the array length
+   2.  length() - method - find out the string length
+   3.  size() - method - find out the collection length.  
+
+  Collections - Vector , ArrayList, LinkedList, Set, HashSet, TreeSet, HashMap , TreeMap , Hashtable.
+                Vector + Hashtable - both r the synchronized collection. 
+ 
+ 7th - int strcmp(str1,str2) - compare 2 Strings without ignore case - means case sensitive. 
+      in java we have equals(str) & compareTo(str).
+        equals() - return boolean(true/false) , compareTo() return int - diff of ASCII code - same as C 
+
+     it return -   0 - if both strings r equals
+                 +ve - if 1st string is greater
+                 -ve - if 1st string is small.
+
+    ** compare with char by char(with ASCII code) & return the diff of ASCII code. 
+
+      ASCII code - A - 65 to Z - 90
+                   a - 97 to z - 122
+
+     a = "Anand"; b = "Chintu"; 
+     if(strcmp(a,b)>0) - -2 - condition false
+     if(strcmp(b,a)>0) - +2 - condition true
+
+  in java -   if(a.equals(b)) - return false , if equals - return true 
+    or 
+  compareTo() - return int - diff of ascii code - same as strcmp() in C & C++. 
+
+ 8th - int strcmpi(str1,str2) - compare 2 Strings with ignore case - means case in-sensitive. 
+      in java we have equalsIgnoreCase(str) or compareToIgnoreCase(str)
+
+     it return - 0 - if both strings r equals
+               +ve - if 1st string is greater
+               -ve - if 1st string is small.
+       ** compare with char by char(with ASCII code) 
+          & return the diff of ASCII code. 
+
+     a = "ANAND"; b = "anand"; 
+     if(strcmpi(a,b)==0) - 0 - true
+     a = "anand", b "Chintu"; 
+     if(strcmpi(a,b)<0) - -2 - condition true
+   
+     if(strcmpi(b,a)>0) - +2 - condition true
+
+   * it internally convert into one case - may be upper or lower then compare it char by char
+
+  in java -   if(a.equalsIgnoreCase(b)) - return true
+ 
+ 9th - int strncmp(str1,str2,noc) - compare 2 Strings with no of chars - without ignore case - means case sensitive. 
+       in java we have startsWith(str)
+
+     it return - 0 - if both strings r equals
+               +ve - if 1st string is greater
+               -ve - if 1st string is small.
+       ** compare with char by char(with ASCII code) & return the diff of ASCII code. 
+
+       a = "Sandeep";
+       b = "Sanjay";
+       if(strncmp(a,b,3)==0) {}  - compare starting 3 chars - true
+
+       info@agilesoftech.in 
+
+     in java - jab whole string compare karna ho - equals() & equalsIgnoreCase()
+             - jab start se compare karna ho - startsWith()  
+             - jab end se compare karna ho - endsWith()  
+             - jab mid me compare karna ho - means kahi bhi ho
+                int indexOf(String str) - return index of String in String, if String not not found then return -1
+                boolean contains(String str) - return true if String is exist else return false
+                      012345678
+          String s = "Shubham Bajpai says, I m a good boy.";
+          s = s.toLowerCase(); 
+          if(s.indexOf("bajpai")!=-1) - true , it return 8, -1 - jab String index not exist. 
+          if(s.contains("bajpai")) - true
+          if(s.indexOf("girl")!=-1) - false, it return -1 - jab String index not exist. 
+          if(s.contains("girl")) - false
+
+ 10th - int strncmpi(str1,str2,noc) - compare 2 Strings with no of chars with ignore case - means case insensitive. 
+        no method is java for that we need to change into one case may be upper/lower case. 
+
+       it return - 0 - if both strings r equals
+                 +ve - if 1st string is greater
+                 -ve - if 1st string is small.
+       ** compare with char by char(with ASCII code) 
+          & return the diff of ASCII code. 
+
+       a = "SANDEEP";
+       b = "sanjay";
+       if(strncmpi(a,b,3)==0) {} true - compare starting 3 chars with ignore case
+
+  in java
+       String s = "Shubham Bajpai says, I m a good boy.";
+       s = s.toLowerCase(); 
+       if(s.indexOf("bajpai")!=-1) - true
+       if(s.contains("bajpai")) - true
+
+ for String compare in C - strcmp(str1,str2), strcmpi(str1,str2), strncmp(str1,str2,noc), strncmpi(str1,str2,NOC) 
+
+ total method in C & C++ for String handling - 10
+  strcpy() + strcat() + strupr() + strlwr() + strrev() + strlen() + strcmp() + strcmpi() + strncmp() + strncmpi() 
+    

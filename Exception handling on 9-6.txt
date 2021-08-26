@@ -1,0 +1,511 @@
+  Error - Compile Time errors - we can't trap - can't handle. - must be resolve (Developer end)
+  Exception - runtime error - all runtime errors r called Exception. (Developer end)
+  Buggs - at the user end.
+  Debugging - buggs removing processing. (Developer end)
+ 
+ Output Based Question - what happens when compile & run it?
+  
+  ur ans - Error - that means compile time error
+  ur ans - Exception - that means runtime error. 
+
+ Exceptions - sub set of errors. 
+    errors - any abnormal condition. 
+
+ Types of errors - 
+
+		Compile time 			Runtime errors
+ * syn. errors - ; , system , inta;  * Logical Errors - / by  0 , NumberFormat, ArrayIndexOutOfBoundsException
+ * we can't trapped - can't ignore   * we can trap by using the Exception Handlings.
+                                       means with try & catch block - we can handle/manage. 
+
+ The Exception Handling in Java is one of the powerful mechanism to handle the runtime errors so that 
+ normal flow of the application can be maintained.
+
+  jaise hi Application ke inside Exception aata hai, application wahi se terminate ho jayegi aage code ko read nahi karega.
+
+ all run time errors r called Exceptions & base class of all Exceptions - java.lang.Throwable.
+
+   java.lang - package , this is default import.
+   Throwable class - it has 2 sub class classes - 
+     - Error - we can't handle.
+     - Exception - we can handle
+
+ Object 
+   - Throwable
+      - Exception 
+         - All Exception classes
+      - Error
+         - all Error classes. 
+
+ 		Exception 			Error
+ * we can handle                  * we can't handle 
+ * end with Exception -           * end with Error  - NoClassDefFoundError,
+   ArithmeticException,             NoSuchMethodError / StackOverflowError. 
+   NumberFormatException,
+   ArrayIndexOutOfBoundsException 
+   SQLException / InputMismatchException
+   RemoteException / IOException 
+
+  means runtime me bhi 2 Types ke Error honge - ek jo handle Honge - wo part of Exception hoga &
+  jo handle nahi honge wo part of Error Hooga.
+ 
+ Q- what is the root class of all Exceptions? 
+
+Ans - just design documentation of that - ArithmeticException 
+
+   Object 
+     - Throwable
+       - Exception
+          - RuntimeException
+            - ArithmeticException 
+
+  public class A extends ArithmeticException {} 
+ 
+  save with - A.java -
+
+    dos>javadoc -d aa A.java
+
+  - java documentation design inside aa folder. 
+
+  Q- what is the need of Exception handling? kyo kare?
+Ans- by using the exception handling we can control the abnormal termination of program.
+        or
+    The core advantage of exception handling is to maintain the normal flow of the application.
+    An exception normally interrupt the normal flow of the application. that's why we use exception handling.
+
+    ** we can't design any Application without using Exception handling, always with U. - try & catch.
+
+ java.lang.Error - it has - (Jo handle nahi honge)
+
+ 1. NoClassDefFoundError - if class definition not found. before jdk1.6 
+       java haha 
+
+ 2. NoSuchMethodError - if method not found - 
+
+class A
+{
+  void checkId()
+  {
+    System.out.println("U r a valid user, I m inside checkId method");
+  }
+}
+
+resource design by Abhay-Pratap
+
+class B 
+{
+   public static void main(String aa[])
+   {
+      A o = new A(); 
+      o.disp();
+   }
+}
+
+Resource use - Laxmi 
+
+ dos>javac B.java
+ dos>java B  - properly run kiya 
+
+ now open A.java file & remove the checkId() method + compile the A.java
+ 
+ dos>javac A.java 
+
+ C:\excep9>java B
+ Exception in thread "main" java.lang.NoSuchMethodError: A.checkId()V
+        at B.main(B.java:6)
+
+ 3. StackOverflowError - if program stack is full 
+
+ JVM - objects - stored inside heap memory, methods stored inside stack memory. - proff? 
+
+class Stack
+{
+   public static void main(String args[])
+   {
+      System.out.println("Abhay Khuch Hua, Ha Ha Ha Ha He He He He He He He He....");
+      main(args); 
+   }
+}
+  
+  in this program we have StackOverflowError - bcos recursion use but without any condition.
+
+___________________________________________________________________
+
+ java.lang.Exception - it has - jo handle hoonge - 
+
+  Type of Exceptions - 2 Types - Checked Exception + Unchecked Exception. 
+
+      Checked Exception 	                               Unchecked Exception 
+* need to handle else display the compile time error   * no need to handle. but if any Exception in runtime 
+   means must be Written with try catch or with throws.  then program terminate.            
+* agar compile karte time Exception handling           * agar compile karte time exception ko handling ka
+  ka complain kiye to checked Exception hai              complain nahi kiya to unchecked Exception hai
+
+ in desi lang - jo JVM apni boundary ke inside rah ke work/operation perform kar raha hai wo unchecked 
+      Exception ka part hooga, but jo JVM apni boundary ke outside ja ke work/operation perform kar raha hai 
+      wo checked Exception ka part hooga
+
+JVM apni boundary ke inside - ArithmeticException - / by 0, NumberFormatException, 
+        ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException, NullPointerException,
+        NegativeArraySizeExcetion. InputMismatchException. 
+
+   Bike ke showroom - bike purchase - onread price - 70000, without - ins + registration - 55000. 
+      without ins + registation - purchase kiya - road -> checking -> document view -> we have no document - chalan.
+
+ JVM apni boundary ke outside Jaye - SQLException(request java to forward to database), 
+                                     FileNotFoundException -( request java to file System.)
+                                     RemoteException - (request java to remote PC forward)
+                                     UnknownHostException -( request java to Socket/Network.)
+                                     InterruptedException (request Java to forword Schedular.)
+
+   Car ke showroom - Car purchase - onread price - 650000, without - ins + registration - 6 lac
+       without ins + registation can't purchase, after car purchase 
+          road -> checking -> document view -> now we have document - Ok 
+    
+Unchecked Exception - 
+-------------------
+ 1. RuntimeException - it has 
+
+  1. NumberFormatException - if invalid number for type casting
+ 
+  class Ex1
+  {
+    public static void main(String aa[])
+    {
+      int a,x;
+      a = Integer.parseInt(aa[0]); // type cast 1st command line argument from String to int. - 
+      x = 100 / a; // ArithmeticException 
+      System.out.println("x is = "+x); 
+      System.out.println("Thanxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
+    }
+  }
+
+  java Ex1 haha 
+
+   NumberFormatException - 
+
+  2. ArithmeticException - / by 0
+
+  dos>java Ex1 0 
+
+ 3- IndexOutOfBoundsException - if Array & String index not exist
+
+   1- ArrayIndexOutOfBoundsException - if Array index not exist
+
+
+  java Ex1                   - now we have - ArrayIndexOutOfBoundsException 
+
+      int ar[] = new int[5];    -- array index - 0 to 4
+
+      ar[1] = 10; - valid
+      ar[26] = 10; - ArrayIndexOutOfBoundsException
+   
+   2- StringIndexOutOfBoundsException - if String index not exist
+
+     String s = "Amrita"; 
+                 012345
+     char c = s.charAt(2); c = 'r';
+     char c = s.charAt(26);  - StringIndexOutOfBoundsException 
+
+  4. NegativeArraySizeException - if array size in -ve 
+
+      int ar[] = new int[5];   - valid
+      int ar[] = new int[-5];  - NegativeArraySizeException 
+
+2. NullPointerException - if object is null - major in project development.
+ 
+3. InputMismatchException - in Runtime input with Scanner class - input karna hai number but enter kar diya string. 
+_______________________________________________________________
+
+Checked Exception -
+-----------------
+** own Exception - CheckedException ka part hooga
+
+4- SQLException - in JDBC, for any type of SQL related problem - table exist nahi hai , column mismatch , 
+     coltype mismatch, record already exist or any constraint problem(check constraints - sal must be > 20000). 
+
+5- ClassNotFoundException - in JDBC programming & in Reflection API. - for load the class in Runtime.
+
+    Class.forName("oracle.jdbc.driver.OracleDriver"); - connect with oracle database
+    Class.forName("com.mysql.jdbc.Driver"); - connect with mysql database 
+ 
+ - for connect with oracle, but oracle not install or class not set then we have ClassNotFoundException. 
+
+6. RemoteException - in RMI programming, for any type of Remote related Program. 
+
+    R - Remote - Over the network
+    M - method - function
+    I - Invocation - calling 
+
+ 7. NotBoundException - in RMI programming, if remote server not found. 
+
+ 8. UnknownHostException - in Socket programming  - if remote PC not found. 
+     
+ 9. IOException - in File handling & runtime input with BufferedReader & DataInputStream. 
+
+10- FileNotFoundException - if file not found for input
+
+11. ServletException - Servlets Proramming
+
+12. InterruptedException - in Multi Threading programming.
+
+13. UnSupportedLookAndFeelException - in Swing programming
+   
+    L & F like themes in windows - Windows L&F / Linux LF , Java LF , Windows Classic LF / Nimbus L&F
+
+    Ankit LF - UnSupportedLookAndFeelException
+
+14 - JSPException - in JSP programming
+
+15 - CreateException - in EJB programming. 
+
+16 - StreamCorruptedException - if file data is Corrupt. 
+____________________________________________________________________________
+
+ how to handle - 5 keywords - try + catch + throw + throws + finally 
+
+ try - check the code there is any Exception or not, if yes then handle in catch block. 
+       means in simple language - jis code me lagta hai problem aa sakti hai use try me likho. 
+        if 1% bhi lagta/dought hai ki exception aa sakta hai try me likho.
+
+ catch - Action on that Exception - means agar exception aaye to aap is task ko perform karo ye catch me lokho 
+        (means jo bhi exception aane pe action lena hai wo catch me likho)
+
+ finally - at the end of try & catch block - this is optional - use nahi karte faltu hai.
+           - means ye to call hoga hi chahe exception aaye ya naa aaye 
+
+ throw - use with condition for generate the new Exception, means agar koi bhi apna exception generate
+         karna hai to throw se karo.
+ 
+   Banking Project Design -  SignMismatchException, InvalidAmountException, InvalidAccountException, InvalidDateException, 
+
+ throws - use with method body for handle the exception. 
+           -> for exception handling 2 types - with try & catch & with throws.
+               ->try & catch - use inside method body
+                   void check(String str) {  try { ---- } catch(Exception ex) { --- }  }
+               ->throws - used with method body. 
+                   void check(String str) throws Exception {} 
+       
+  now focus on - try + catch,      throws & throw - next class 
+
+ ** one try block should have one catch or one finally block - must.
+       catch - proper handle karega
+       finally - finally wale msg ko print karke terminate marega. next statements ko call nahi karege, 
+                 isliye hum hamesa catch use karege, finally use nahi karte hai. 
+ ** one try block can contain multiple catch block also.
+ ** one program can contain multiple try catch block. 
+ ** we can't use catch without try block.
+ ** we can use nested try block also. - try ke inside try & catch ke inside try use kar sakte hai 
+ ** in jdk1.7 we have one extra concept also - catch with multiple exception,  separate with | (pipe) 
+       in JDK1.7 - catch(ArithmeticException | NumberFormatException | ArrayIndexOutOfBoundsException ex) {} 
+
+Java 7(jdk1.7) Catch Multiple Exceptions - 
+
+before jdk1.7 
+
+ try 
+ {
+ }
+ catch(ArithmeticException ex){}
+ catch(NumberFormatException ex){}
+ catch(ArrayIndexOutOfBoundsException ex){}
+
+ in jdk1.7 we have catch Multiple Exception concept. 
+ Java allows you to catch multiple type exceptions in a single catch block. It was introduced in Java 7 and helps to 
+ optimize code. You can use vertical bar/pipe (|) to separate multiple exceptions in catch block.  
+ 
+     catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {} - valid - child - child ka combination 
+     catch(Exception | ArithmeticException | ArrayIndexOutOfBoundsException e){} in this statement we have error msg
+       - error: The exception ArithmeticException is already caught by the alternative Exception
+
+ The try-with-resources statement - in jdk1.7 - 
+
+    try - old concept  
+    {
+       FileInputStream r = new FileInputStream("Data.txt");
+       FileOutputStream w = new FileOutputStream("Data1.txt");
+       int x;
+       while((x=r.read())!=-1)
+         w.write(x);
+       w.close();
+       r.close();
+    }
+    catch(Exception ex) { System.out.println(ex); }
+
+  In Java, the try-with-resources statement is a try statement that declares one or more resources. The resource is as
+  an object that must be closed after finishing the program. The try-with-resources statement ensures that each resource
+  is closed at the end of the statement execution.
+
+   try(FileInputStream r = new FileInputStream("fileIO.txt")){
+     or
+   try(FileInputStream r = new FileInputStream("fileIO.txt");
+       FileOutputStream w = new FileOutputStream("fileIO1.txt");)
+   {
+       we can use r & w object in whole try block - current try only. 
+   }  
+   catch(Exception ex) {}
+
+__________________________________________________________
+// without Exception handling
+class Ex1
+{
+   public static void main(String aa[])
+   {
+     int a,x;
+     a = Integer.parseInt(aa[0]); // type cast 1st command line argument from String to int. - ArrayIndex + NumberFormat
+     x = 100 / a; // ArithmeticException 
+     System.out.println("x is = "+x); 
+     System.out.println("Thanxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
+   }
+}
+// Thanx msg display only when there is no any Exception - means application normal execute hua to. 
+__________________________________________________________
+// with Exception handling - with single catch block - 
+// 100% - use, this is the best algo fo exception handling ye hi use hota hai & le hi use karna hai.
+class Ex2
+{
+   public static void main(String aa[])
+   {
+     int a,x;
+     try
+     {
+       a = Integer.parseInt(aa[0]); // type cast 1st command line argument from String to int. - ArrayIndex + NumberFormat
+       x = 100 / a; // ArithmeticException 
+       System.out.println("x is = "+x); 
+     }
+     catch(Exception ex) // Exception is the base class of all exceptions, it can handle all type exception.
+     {
+       System.out.println("Exception is - "+ex); 
+     }
+     System.out.println("Thanxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
+   }
+}
+// Thanx msg always display
+
+/*
+   Animika Dubey - family function  - Chanchal's Family invite 
+   Chanchal's Family Total members - 5 - 1. card - father name - with family - whole family invite hua - Exception 
+                                         5. cards - every person ko separately invite kiya. 
+
+*/
+__________________________________________________________
+// with Exception handling - with multi catch block - 
+// 0% - use, this is the bad algo for exception handling - no use 
+class Ex3
+{
+   public static void main(String aa[])
+   {
+     int a,x;
+     try
+     {
+       a = Integer.parseInt(aa[0]); // type cast 1st command line argument from String to int. - ArrayIndex + NumberFormat
+       x = 100 / a; // ArithmeticException 
+       System.out.println("x is = "+x); 
+     }
+     catch(ArithmeticException ex) // only for ArithmeticException
+     {
+       System.out.println("Ohh! Sorry this is / by 0"); 
+     }
+     catch(NumberFormatException ex) // only for NumberFormatException
+     {
+       System.out.println("Sorry Invalid Number for Type casting"); 
+     }
+     catch(ArrayIndexOutOfBoundsException ex) // only for ArrayIndex
+     {
+       System.out.println("Sorry There is no command line arguments..."); 
+     }
+     System.out.println("Thanxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
+   }
+}
+// Thanx msg always display
+
+/*
+   Animika Dubey - family function  - Chanchal's Family invite 
+   Chanchal's Family Total members - 5 - 1. card - father name - with family - whole family invite hua - Exception - best
+                                         5. cards - every person ko separately invite kiya. 
+
+*/
+__________________________________________________________
+// with Exception handling - with multi catch block - 
+// 10 to 20% - use, minor use - kabhi kabhi
+class Ex4
+{
+   public static void main(String aa[])
+   {
+     int a,x;
+     try
+     {
+       a = Integer.parseInt(aa[0]); // type cast 1st command line argument from String to int. - ArrayIndex + NumberFormat
+       x = 100 / a; // ArithmeticException 
+       System.out.println("x is = "+x); 
+     }
+     catch(ArithmeticException ex) // only for ArithmeticException
+     {
+       System.out.println("Ohh! Sorry this is / by 0"); 
+     }
+     catch(Exception ex) // for others 
+     {
+       System.out.println("Exception is - "+ex); 
+     }
+     System.out.println("Thanxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
+   }
+}
+// Thanx msg always display
+
+/*
+   Animika Dubey - family function  - Chanchal's Family invite 
+   Chanchal's Family Total members - 5 - 1. card - father name - with family - whole family invite hua - Exception 
+                                         5. cards - every person ko separately invite kiya. 
+
+*/
+__________________________________________________________
+// with Exception handling - with multi catch block - 
+// 90% - in interview - what happens when compile & run it.
+class Ex5
+{
+   public static void main(String aa[])
+   {
+     int a,x;
+     try
+     {
+       a = Integer.parseInt(aa[0]); // type cast 1st command line argument from String to int. - ArrayIndex + NumberFormat
+       x = 100 / a; // ArithmeticException 
+       System.out.println("x is = "+x); 
+     }
+     catch(Exception ex) // for others 
+     {
+       System.out.println("Exception is - "+ex); 
+     }
+     catch(ArithmeticException ex) // only for ArithmeticException
+     {
+       System.out.println("Ohh! Sorry this is / by 0"); 
+     }
+     System.out.println("Thanxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
+   }
+}
+// error: exception ArithmeticException has already been caught.
+__________________________________________________________
+// with Exception handling - with multi try block 
+class Ex6
+{
+   public static void main(String aa[])
+   {
+     int a,b,c;
+     try
+     {
+       a = Integer.parseInt(aa[0]); // type cast 1st command line argument from String to int. - ArrayIndex + NumberFormat
+     }
+     catch(Exception ex) {  a = 0;  }
+     try
+     {
+       b = Integer.parseInt(aa[1]); // type cast 2nd command line argument from String to int. - ArrayIndex + NumberFormat
+     }
+     catch(Exception ex) {  b = 0;  }
+     c = a + b;
+     System.out.println("Sum is = "+c); 
+     System.out.println("Thanxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
+   }
+}
+// Thanx msg always aayega
+
+

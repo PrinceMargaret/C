@@ -1,0 +1,131 @@
+Q1. Who is known as the father of C Language ?
+
+    A. James Gosling      B. Rasmus Lerdorf        C. Dennis Ritchie      D. Dr. E. F. Codd
+
+Q2. C Language was developed in the year ____
+
+     A. 1970                  B. 1975                   C. 1980                D. 1985
+
+Q3. Which one is not a reserve keyword in C Language?
+
+      A. auto                 B. main                   C. case                D. register
+
+Q4.  A C variable name can start with a ____
+
+      A. Number                B. Plus Sign (+)          C. Underscore         D. Asterisk (*)
+
+Q5. Prototype of a function means _____
+
+      A. Name of Function      B. Output of Function     C. Declaration of Function    D. Input of a Function
+
+Q6. Name the loop that executes at least once.
+
+      A. For                   B. If                     C. do-while            D. while
+
+Q7. Far pointer can access _____
+       
+      A.Single memory location   B.No memory location    C.All memory location  D.First and Last Memory Address
+
+Q8. A pointer pointing to a memory location of the variable even after deletion of the variavle is known as _____
+
+      A.far pointer              B.dangling pointer      C.null pointer         D.void pointer
+
+Q9. An uninitialized pointer in C is called ___
+
+      A.Constructor              B.dangling pointer      C. Wild Pointer        D. Destructor
+
+Q10. A pointer that is pointing to NOTHING is called ____
+
+      A.VOID Pointer             B.DANGLING Pointer      C.NULL Pointer         D.WILD Pointer
+
+Q11. The maximum number of temporary variables needed to swap the contents of the variables is
+
+      a) 1                       b) 2                    c) 3                  d) 0
+
+Q12) x – =  y + 1 ; does the same as
+
+      a)  x = x – y + 1          b) x = x – y – 1        c) x  = – x + y + 1   d)  x  = x – y – 1
+
+Q13) The default parameter passing mechanism is
+
+      a) call by value           b) call by reference    c) call by value result  d) none of the above
+
+Q14) Let x be an array. Which of the following operation are illegal?
+
+      a) ++ x                    b) x + 1                c) x++                   d) x * 2
+
+Q15) printf ("%d", printf ("Hi-Tech")) ;
+
+      a) results in a syntax error   b) outputs Hi-Tech7   c) outputs garbage   d) prints t i m and terminates abruptly
+
+Q16) What is the 16-bit compiler allowable range for integer constants?
+
+      a) -3.4e38 to 3.4e38      b) -32767 to 32768         c) -32668 to 32667   d) -32768 to 32767
+
+Q17) What is required in each C program?
+
+      a) The program must have at least one function.      b) The program does not require any function.
+      c) Input data                                        d) Output data
+
+Q18 - What function can be used to free the memory allocated by calloc()?
+
+      A) dealloc();       B) strcat();     C) free();      D) memcpy();
+
+Q19. In which header file is the NULL macro defined?
+
+      A. stdio.h          B. stddef.h      C. stdio.h and stddef.h    D. math.h
+
+Q20. A pointer is
+
+     A.	A keyword used to create variables                 B. A variable that stores address of an instruction
+     C.	A variable that stores address of other variable   D. All of the above
+
+Q21. What are the different types of real data type in C ?
+
+     A.	float, double                B.	short int, double, long int
+     C.	float, double, long double   D.	double, long int, float
+
+Q22. In C, if you pass an array as an argument to a function, what actually gets passed?
+
+     A.	Value of elements in array               B. First element of the array
+     C. Address of the last element of array     D. Base address of the array 
+
+Q23. Which header file should be included to use functions like malloc() and calloc()?
+
+     A.	memory.h      B. stdlib.h     C. string.h    D.	dos.h
+
+Q24. How will you free the allocated memory ?
+
+     A.	remove(var-name);    B. free(var-name);   C. delete(var-name);  D. dalloc(var-name);
+
+Q25. What is the similarity between a structure, union and enumeration?
+
+     A.	All of them let you define new values        B.	All of them let you define new data types
+     C.	All of them let you define new pointers      D.	All of them let you define new structures
+
+Q26. In mathematics and computer programming, which is the correct order of mathematical operators ?
+
+     A.	Addition, Subtraction, Multiplication, Division   B. Multiplication, Addition, Division, Subtraction
+     C.	Division, Multiplication, Addition, Subtraction   D. Addition, Division, Modulus, Subtraction
+
+Q27. Which of the following cannot be checked in a switch-case statement?
+
+     A.	char      B. int      C. float    D. enum
+
+Q28. What do the following declaration signify?
+        void *cmp();
+
+     A.	cmp is a pointer to an void type.           B. cmp is a function that return a void pointer.
+     C.	cmp is a void type pointer variable.        D. cmp function returns nothing.
+
+Q29. What do the following declaration signify?
+
+       void (*cmp)();
+     A.	cmp is a pointer to an void function type.       B. cmp is a void type pointer function.
+     C.	cmp is a function that return a void pointer.    D. cmp is a pointer to a function which returns void .
+
+Q30. What do the following declaration signify?
+
+     char *str;
+     A.	str is a pointer to pointer variable.        B.	str is a function pointer.
+     C.	str is a pointer to char.                    D.	str is a member of function pointer.

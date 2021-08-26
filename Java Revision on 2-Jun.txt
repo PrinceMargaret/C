@@ -1,0 +1,202 @@
+  B.Tech 3rd year - focus on one Technology - Best Technology - Java  
+    Focus on Core java - 
+  after Core Java - front end developer - UI developer - HTML + CSS + Java Script(Sun + Netscape) + Boot Strap 
+                                     + NodeJS + ReactJS + AngularJS - for dynamic web Application. 
+               Java Web Developer - servlets + jsp + Hibernate + struts + spring MVC + Spring Boot. 
+               Android Developer - Mobile App. 
+ 
+        if u have problem - direct in class + group + persnal - whatsapp. 
+
+  common concept in C, C++ & java
+    1. conditions same - if - else if - else  / switch case same
+    2. looping same - for + while + do whole - same , but in java we have one extra loop that is for each loop - add in
+                      jdk1.5 & only for arrays & collections.
+
+   Java is a kind of Application written in C++. focus on jdk1.8 (till 1.8 java open source. )
+
+ Basics for Technology - Java's Basics - 
+
+  1. class name & file name always same rakhna hai. 
+  2. all classes must be design or use with Pascal case - Har work ka 1st char capital karna hai. 
+  3. all methods must be design or use with camel Case - excluding 1st word's 1st char all remaining words 1st char should be capital
+  4. all const var must be design or use with UPPER case - Capital case. 
+  5. class name not start with any reserved word - class if {}  , class this {} , class super {} 
+  6. always follow the coding standard. - jo vars & methods define + class name design always with proper name
+  7. if we want to perform Runtime inputs in java for that we can Scanner class & Scanner class stored inside java.util package
+      package - it is a container that contain  the class files, interfaces & sub packages.  (last class)
+
+       Scanner r = new Scanner(System.in); 
+       System.out.print("Plz Enter 2 Numbers : ");
+       int a = r.nextInt(); // input 1st number
+       int b = r.nextInt(); // input 2nd number 
+       int c = a + b;
+       System.out.println("Sum is = "+c);
+
+  methods of Scanner class - all Scanner class methods pre fix with next word. 
+
+       int nextInt() - for input int value 
+       float nextFloat() - for input float value
+       long nextLong () - for input long value.
+       double nextDouble() - for input double value
+       String next() - for input next word only - single word
+       String nextLine() - for input whole line - input whole line until enter press
+
+    ** in Java no meaning of Runtime inputs, bcos ke inside jo bhi input aayega wo always form se aayega - forms may be 
+       Application form / web form / Android Form. 
+       
+  8. for console output - System.out.print("Welcome to Java");  - print in same line
+                          System.out.println("Welcome to Java");  - print in same line + new line (new line - \n)
+                          System.out.printf("Sum is = %d",c);  - print with format
+
+  9 data types in java - 2 Types - primitive + composite data types.
+        primitive - 8 - 
+          for numbers - byte - 1 byte , short - 2 bytes , int - 4 bytes , long - 8 bytes 
+          for point values - float - 4 bytes , double - 8 bytes
+          for char - char - 2 bytes - for 512 charset support - national char set support 
+          for boolean - boolean  - 1bit - true / false , default is false. 
+
+ java Application / program - we can use Notepad / Notepad++ / Netbeans / Eclipse / STS / IntellJ / VSCode 
+
+ import java.util.Scanner;
+ class Sum // program always start with class name
+ {
+    public static void main(String aa[]) // like main method in java, like main in C & C++. 
+    {
+       Scanner r = new Scanner(System.in); 
+       System.out.print("Plz Enter 2 Numbers : ");
+       int a = r.nextInt(); // input 1st number - jo user 1st input kare wo a ke inside store kar do - nextInt(next input value as int use get karna hai).
+       int b = r.nextInt(); // input 2nd number  
+       int c = a + b;
+       System.out.println("Sum is = "+c);
+    }
+ }
+
+  save inside own folder - 
+
+   c:\yash\Sum.java 
+
+  dos -> run -> cmd -> cd \  - for root 
+  c:\>cd yash 
+  c:\yash>javac Sum.java
+  c:\yash>java Sum
+
+ 10. for design any Application - any program - we have 3 things
+
+       Input(1)   -> processing(3)  <-   output(2)  
+ 
+ 11. for program design we can use notepad / notepad++ / eclipse / Netbeans / IntellJ / VSCode. 
+
+ 12. for Type casing value from String to int / float / double / long 
+
+      ** jo bhi me input ya output hoga wo as a String hoga - 90% cases , in Spring + struts + Spring boot - primitive data input support
+
+    2 Types - 2 Methods for Type casting from String to primitive type - parse method & valueOf() method
+
+    String to int - 
+
+       int x = Integer.parseInt(str);
+       int x = Integer.valueOf(str);
+
+    String to float - 
+
+       float x = Float.parseFloat(str);
+       float x = Float.valueOf(str);
+
+    String to long - 
+
+       long x = Long.parseLong(str);
+       long x = Long.valueOf(str);
+
+    String to double - 
+
+      double x = Double.parseDouble(str);
+      double x = Double.valueOf(str);
+
+      int a = Integer.parseInt(t1.getText()); 
+      int b = Integer.parseInt(t2.getText()); 
+      int c = a + b;
+      t3.setText(""+c);
+      
+ 12. methods - block of code / set of statements/ set of instructions, use for perform the particular task,
+   3 Types - 
+
+    1. Constructor - auto call at the time of object creation - implicit invoke - no need to call that
+    2. Destructor - auto call at the time of object destroy - implicit invoke - no need to call that (not in Java)
+    3. function - we need to call that. 
+
+     ** in Java we have only concept of Constructor & function, no concept of destructor. 
+
+  Constructor - it is a method, used for initialized the attributes of a class. 
+                      or
+   it is a kind of function / block of code / set of statements / set of instructions, used for initialized the attributes
+   of a class. 
+
+  Constructor prop & rules - 
+
+  1. Constructor name & class name must be same .
+  2. Constructor no return any value that means no need to design with return type. 
+  3. Constructor can't called recusively.
+  4. Constructor can't be final, static & can't be abstract.
+  
+     final - bcos Constructor not inherited, means can't override in child class. 
+     static - for direct calling with classname but Constructor only called with new & this operator. 
+     abstract - for define prototype but Constructor always contain the body.
+
+ prop - 
+
+  5. every class has one Constructor - atleast one must, if user does not define any Constructor in a class then default
+     Constructor created, but if class has any own Constructor then default Constructor not created. 
+  6. if one class has more then one Constructor that is called Constructor overloading. 
+  7. Constructor can be private, if it is private then can't called outside the class body, used for design the singleton
+     class or design the factory method. 
+  8. Constructor automatically called when ever object is created.
+  9. Constructor for dynamic initialization - runtime initialization - means object design karte time hume kuch members
+     ko initialize karna hai wo Constructor ke inside karoge.
+
+   object creation in java - 
+
+      ClassName objName(argument/s); - in C++.
+      ClassName objName = new ClassConstructor(argument/s);  - in java ,
+
+    ex - 
+       QuickHeal q = new QuickHeal(); - no argument passing Constructor.
+       QuickHeal q = new QuickHeal(599); - one argument passing Constructor.
+
+     in C++
+       QuickHeal q; - no argument passing Constructor.
+       QuickHeal q(599); - one argument passing Constructor.
+  
+  object - object is the instance of a class. 
+
+ in C
+    int a;  - a is the variable of int type. 
+
+  struct Emp
+  {
+     int empno;
+     char name[20];
+     int sal;   
+  }; 
+
+  Emp e; - e is the variable of Emp type.   e.name / e.sal / e.empno - means Emp structure ka empno var / ename var / sal var
+      e.empno = 1001;
+      e.ename = "Bhavya Kumar";
+      e.sal = 32000;
+
+    in java we can initialize all 3 variables inside Constructor. 
+
+ in Java - class type var declare karna hai - that is called object & us object ke initialise karna hai to Constructor 
+           call karoge with new operator. 
+
+   QuickHeal q = new QuickHeal(599); - one argument passing Constructor calling 
+   q. - Quick class members calling karna hai 
+
+  new operator - it is for - 
+
+     1. Call the Constructor - hai to theek nahi default ko call karega
+     2. allocate memory for object 
+     3. return ref of class for object. 
+
+   QuickHeal q = new QuickHeal(599); - one argument passing Constructor calling 
+   q.disp();  - QuickHeal class disp method calling bcos q hold the ref/instance of Quick heal class .
+

@@ -1,0 +1,202 @@
+// Enter 10 names & display in ascending order
+
+#include<stdio.h>
+#include<conio.h>
+#define MAX 10
+void main()
+{
+   char tmp[20],nm[MAX][20]; // 10 rows - 10names, each name contain max 20 chars
+   int i,j;
+   clrscr();
+   for(i=0;i<MAX;i++)
+   {
+      printf("Plz Enter name %d : ",i+1);
+      gets(nm[i]);
+      strupr(nm[i]);
+   }
+   // for sorting - selection sort.
+   for(i=0;i<MAX-1;i++)
+   {
+      for(j=i+1;j<MAX;j++)
+      {
+	 if(strcmp(nm[i],nm[j])>0) // swap 2 strings with 3rd var.
+	 {
+	    strcpy(tmp,nm[i]);
+	    strcpy(nm[i],nm[j]);
+	    strcpy(nm[j],tmp);
+	 }
+      }
+   }
+   // for display
+   for(i=0;i<MAX;i++)
+     printf("\nWelcome %s",nm[i]);
+   getch();
+}
+____________________________________________________
+
+ Pointer - it is a kind variable that/which hold the address of another variables. 
+                or
+   Pointer is the nothing, it is a variable which hold the address of another variables, normal variable contain the 
+   value but pointer variable contain the address of a/another variable. 
+
+    in Pointer we have only 2 Things - 
+
+      & - add of the variable
+      * - value of the variable.
+
+  Q- how to declare Pointer variable.
+
+         datatype *varName; datatype can be int,float, char, long & can be void also. 
+  
+      --> we can use any number of * with var name, kitna * use kiye wo apne se ek kam ka address/ref hold karega. 
+
+
+         void pointer - it can hold the address of any type of variables, for dynamic memory allocation we have 
+         calloc() + malloc() + realloc() function & all 3 functions return is void pointer, we need to cast that. 
+
+     means void pointer ek aisa pointer hai jis ke inside app kisi bhi type ke var ka address store kar sakte ho. 
+
+     Q- we have concept of Pointer function or not?
+    Ans- yes can use, we can design pointer function also, pointer function can hold the ref of any function.
+         in Java we have Method ref - method ref same as pointer function of C.
+         ** method ref + lambda expression both r add in jdk1.8
+              :: - Scope resolution Operation in C++, we have in jdk1.8 also, used for method ref      
+              -> - (Arrow operator) - in C & C++ use with struct pointers, we have in java also that is known as Lamdba 
+                   expression. 
+
+  ex -  
+
+     int x = 100;  - normal variable. 
+   
+     int *a;     - single pointer , it can hold address of normal variable.
+     int **b;    - double pointer , it can hold address of single pointer variable.
+     int ***c;   - triple pointer , it can hold address of double variable.
+     int ****d;  - quad/tetra pointer , it can hold address of triple variable.
+     int *****d; - 5th propinter, it can hold the address of qrad pointer. 
+
+     a = x;
+     b = a;
+     c = b;
+     d = c;
+     e = d; 
+
+   ** jitne * ke saath ke saath pointer declare hai agar utne hi * ke saath print kar diya to wo value display
+      display karega kiska wo address hold kar raha hoga. 
+   ** jitne * ke saath aap saath aapne pointer design kiya hai usse ek kam * agar print karoge to wo address display 
+      karega jiska wo address hold kar raha hoga. 
+
+   address of self - var ke saath & karoge to wo address show karega - may ne pointer variable hai ya normal var hai
+
+
+   print a;  - address of x
+   print b;  - address of a
+   print c;  - address of b
+   print d;  - address of c
+   print e;  - address of d;   
+
+   address of x - print with 
+
+   x   -  print &x;
+   a   -  print a; 
+   b   -  print *b; - value of address a, means address of x  
+
+
+
+     int ar[] = {10,20,30,40,50}; 
+     int *p;
+
+     p = ar; - p hold the base address of ar array - Best syn. 
+     p = &ar; - p hold the address of ar[0], bcos default address pointer base address - 0th index., 
+     p = &ar[0]; - p hold the ref of ar[0];   
+___________________________________________________
+
+void main()
+{
+   int i,ar[] = {10,20,30,40,50};
+   clrscr();
+   printf("ar is - %d\n",ar);  // address of ar[0] in decimal format.
+   printf("ar is - %u\n",ar);
+   printf("&ar is - %u\n",&ar);
+   printf("&ar[0] is - %u\n",&ar[0]);
+
+   printf("*ar is - %d\n",*ar);
+   for(i=0;i<5;i++)
+     printf("%d , %d , %d\n",ar[i],*(ar+i),i[ar]);
+   getch();
+}
+___________________________________________________
+// array with function
+void disp(int ar[])
+{
+   int i;
+   for(i=0;i<5;i++)
+      printf("value of ar[%d] = %d\n",i,ar[i]);
+   printf("--------------------\n");
+}
+void main()
+{
+   int arr[] = {10,20,30,40,50};
+   clrscr();
+   disp(arr);
+   disp(&arr);
+   disp(&arr[0]);
+   getch();
+}
+___________________________________________________
+void main()
+{
+   int x = 100;
+   int *a,**b,***c,****d,*****e;
+   clrscr();
+   a = &x;
+   b = &a;
+   c = &b;
+   d = &c;
+   e = &d;
+   printf("address of x is with x - %u\n",&x);
+   printf("address of x is with a - %u\n",a);
+   printf("address of x is with b - %u\n",*b);
+   printf("address of x is with c - %u\n",**c);
+   printf("address of x is with d - %u\n",***d);
+   printf("address of x is with e - %u\n",****e);
+   printf("value of x with x - %d\n",x);
+   printf("value of x with a - %d\n",*a);
+   printf("value of x with b - %d\n",**b);
+   printf("value of x with c - %d\n",***c);
+   printf("value of x with d - %d\n",****d);
+   printf("value of x with e - %d\n",*****e);
+   getch();
+}
+___________________________________________________
+void you()
+{
+   printf("I m inside you function \n");
+}
+void sum(int a,int b)
+{
+   printf("Sum is = %c\n",a+b);
+}
+void area(int w,int h,int r)
+{
+   printf("Area is = %d \n",w*h*r);
+}
+// void *me(); // me ek function hai jo void type ka pointer return karege
+void (*me)(); // now me() is a pointer function, it can hold the address of any function
+void main()
+{
+   clrscr();
+   me = you; // me hold the ref/address of you function
+   me(); // directly you() calling
+   me = sum; // me hold the ref/address of sum function
+   me(100,20); // directly sum() calling
+   me = area; // me hold the ref/address of area function
+   me(10,20,5); // directly area() calling
+
+   getch();
+}
+
+// malloc() + calloc() realloc() + struct + union - ?
+___________________________________________________
+
+
+

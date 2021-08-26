@@ -1,0 +1,86 @@
+1) What is an Array in C language.?
+    A) A group of elements of same data type.
+    B) An array contains more than one element
+    C) Array elements are stored in memory in continuous or contiguous locations.
+    D) All the above.
+
+2) Choose a correct statement about C language arrays.
+    A) An array address is the address of first element of array itself.
+    B) An array size must be declared if not initialized immediately.
+    C) Array size is the sum of sizes of all elements of the array.
+    D) All the above
+
+3) What are the Types of Arrays.?
+
+    A) int, long, float, double
+    B) struct, enum, union
+    C) char
+    D) All the above
+
+4) An array Index starts with.?
+
+       A) -1        B) 0       C) 1         D) 2
+
+5) Choose a correct statement about C language arrays.
+
+   A) An array size can not changed once it is created.
+   B) Array element value can be changed any number of times
+   C) To access Nth element of an array students, use students[n-1] as the starting index is 0.
+   D) All the above
+
+6) What is the output of C Program.? int main() { int a[]; a[4] = {1,2,3,4}; printf("%d", a[0]); }
+
+   A) 1     B) 2     C) 4      D) Compiler error
+
+7) What is the output of C Program.? int main() { int a[] = {1,2,3,4}; int b[4] = {5,6,7,8}; printf("%d,%d", a[0], b[0]); }
+
+  A) 1,5         B) 2,6        C) 0 0        D) Compiler error
+
+
+8) What is the output of C Program.? int main() { char grade[] = {'A','B','C'}; printf("GRADE=%c, ", *grade); printf("GRADE=%d", grade); }
+
+     A) GRADE=some address of array, GRADE=A                  B) GRADE=A, GRADE=some address of array
+     C) GRADE=A, GRADE=A                                      D) Compiler error
+
+9) What is the output of C program.? 
+           int main() 
+           { 
+              float marks[3] = {90.5, 92.5, 96.5}; 
+              int a=0; while(a<3) { printf("%.2f,", marks[a]); a++; }
+           }
+
+       A) 90.5 92.5 96.5        B) 90.50 92.50 96.50         C) 0.00 0.00 0.00         D) Compiler error
+
+10) What is the output of C Program.? 
+     int main() 
+     { 
+            int i=0; 
+            int a[3] = {20,30,40}; 
+            a[0]++; 
+            while(i<3) 
+            { 
+                printf("%d ", i[a]); 
+                i++; 
+            }
+    }
+
+
+    A) 20 30 40        B) 41 30 20         C) 21 30 40           D) None of the above
+
+
+Q11- Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. 
+   Find the missing element.
+
+Example 1:
+
+  Input: N = 5
+  A[] = {1,2,3,5}
+  Output: 4
+
+Example 2:
+  Input:
+  N = 10
+  A[] = {1,2,3,4,5,6,7,8,10}
+  Output: 9
+
+

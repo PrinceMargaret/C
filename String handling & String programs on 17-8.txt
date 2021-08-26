@@ -1,0 +1,476 @@
+  in Last 3 classes - 
+
+   12-8 - C Basics, Looping + Conditions + basic programs. 
+
+   14-8 - Arrays in C + Programs for Array Sorting + Searching + add unique values in array + count min & max value from
+          array + 1st highest + 2nd highest elements in array + find out no of duplicate elements in array.
+
+   16-8 - char array concept, discess the string handling functions, like strcpy() + strcat() + strupr() + strlwr() + 
+          strlen() + strrev() + strcmp() + strcmpi() + strncmp() + strncmp()
+
+   all string handling function prefix with str word, & all r stored in string.h file 
+
+   strcpy - copy / cat - concat , upr - Upper case , lwr - Lower case , rev - reverse , len - for length , cmp - compare
+      cmpi - compare with Ignore case , ncmp - compare no of chars with case , ncmpi() - compare no of char with ignore
+             case. 
+
+    ** but Written based question - koi bhi string handling function use nahi karna hai - with own logic/algo.
+        
+        
+ any prob? 
+
+   gotoxy(x,y) - x - for cols , y - rows - in one screen / one page - max cols = 80 , max - rows in a page = 24
+     max char in one page = 24 * 80 = 1920 chars honge in a page 
+
+    gotoxy(x,y) - ye tab use karenge jab hame whole screen pe kahi bhi likhna ho - may be on top / bottom / mid / left 
+                  / right, pass cols & rows. 
+
+ strlen() - x
+
+  x = 0;
+  while(ps[x]!=null) 
+    x++; 
+ 
+  bcos with array & collection in Java - storage always 0th index - 1st element on 0th index. 
+
+  array - array is the collection similar kind of data items that share a common name. 
+          storage in array - 0 to size-1 , int ar[5];  - values stored from ar[0] to ar[4]; 
+ 
+  10 days - Core Concepts - main questions in interview - Machine Test / written text - basics + arrays - int & char 
+
+ String Handling & Collection Framework - both r the Major Topic for Interview & project design. 
+   
+ String handling in C & C++ - 
+
+   char - single char - it can store only single char  
+             char c = 'A';    char c;   c = getch();  - contain/store only one char.  
+   String - group of chars. for implement/use string in C & C++, we have concept of char array.
+      means C & C++ ke inside string store karne ke liye alag se koi data type nahi, for that U have 
+      only concept of char array. but in java we have String class for store String, String is a kind of Immutable & final
+      class & stored inside java.lang package. 
+   
+     char nm[10]; - we can store 10 chars string. - Max 10 chars string.
+                      9 chars + 1 string terminate - null char - '\0'  
+
+ char ar[10];    strcpy(ar,"Nishant");    ar = "Nishant";     / char ar[10];   ar = "Nishant"; - wrong way. 
+  
+ ar[0] = 'N' ;
+ ar[1] = 'i' ;
+ ar[2] = 's' ;
+ ar[3] = 'h' ;
+ ar[4] = 'a' ;
+ ar[5] = 'n' ;
+ ar[6] = 't' ;
+ ar[7] = '\0' ; - null char, string terminator char. 
+
+ 
+       nm = "Manoj";  - wrong way, we can't initialize String with = operator , for that we need to
+                        strcpy() function.
+
+       strcpy(nm,"Manoj");  nm = "Manoj";
+   
+    - in java we can use = operator for String initialize -  nm = "Manoj";
+
+String Handling in C & C++ - 
+
+  for string handling in C & C++ we have string.h header file - we have some functions in string.h 
+  header file for String handling - 
+
+  ** all string handling functions prefix with str word - strcat / strrev / strcpy / strcmp / strcmpi 
+     / strlen / strupr / strlwr / strncmp / strncmpi() - 10 functions
+
+   ** problem with - without using any inbuild/pre define function. (80-90% cases)
+
+ 1st -  strcpy(str1,str2) - for string copy.
+
+     char nm[10]; 
+     nm = "Aman"; - wrong way in C & C++.
+     strcpy(nm,"Aman");  now nm is = "Aman"; 
+
+     but in java we can use = operator for string initialize. 
+
+     String s; 
+     s = "Anand"; - valid in java, means no need of any function.
+
+  we want to copy string without using any function.
+
+    char arr[10];
+    char ar[] = "Nishant";  gets(ar); / scanf("%s",ar); - for run time input.
+
+     ar = "Nishant"; 
+ 
+  - for String copy without using strcpy() function - 
+
+    int ctr = 0;
+    while(ar[ctr] != '\0')
+    {
+       arr[ctr] =  ar[ctr]; 
+       ctr ++;
+    }
+    arr[ctr] = '\0';
+
+ 2nd - strcat(str1,str2) - for String concat
+        int a = 10;  - WE WANT TO ADD 5 VALUE IN a - 
+        a = a + 5; / a += 5;   
+        a = 15; 
+
+    nm = "Anand";   - we want to add kumar value in nm 
+    strcat(nm," Kumar"); -   nm = "Anand Kumar";
+
+    for concat string in java we can use + or += operator. 
+    
+     String nm = "Anand"; 
+     nm = nm + " Kumar";  /   nm += " Kumar";
+
+     nm = "Anand Kumar";
+  
+  in java - + or += - operator both r overload means - if use with String - concat, if number then - addition. 
+           ** java not support the operator overloading concept, but + & += operator both r pre overloaded.
+
+ 3rd - strupr(str); - to convert string into upper case
+
+        in java we have - toUpperCase();
+  
+     nm = "manoj";  -  convert into upper case - 
+       strupr(nm);   nm = "MANOJ"; 
+
+    java - String s = "Manoj"; 
+           s = s.toUpperCase();    s = "MANOJ";
+   
+ 4th - strlwr(str); - to convert string into lower case
+        in java we have - toLowerCase();
+
+    nm = "Anand";  / nm = "ANAND";
+    in C & C++ -  strlwr(nm); 
+    java -        nm = nm.toLowerCase();
+
+       nm = "anand";
+
+  ASCII code -  A - 65 to Z - 90  
+                a - 97 to z - 122
+                   ----------------- 
+                    32        32 
+   lower to upper cast -  -32 / upper to lower case casting - +32  0 in ASCII code.
+
+// to convert string into upper case & find out the length of String without using strlen function.
+void main()
+{
+  int ctr=0;
+  char ar[20];
+  clrscr();
+  printf("Plz enter ur Name : ");
+  gets(ar);                 // input Abhay Pratap 
+  printf("Welcome %s",ar); // same as Input value
+  while(ar[ctr]!='\0') // while string not end - \0 - null char - string not empty.  
+  {
+    if(ar[ctr]>='a' && ar[ctr]<='z')  // agar small char,  a - 97 , z - 122 / A-65 to Z - 90
+       or
+    if(ar[ctr]>=97 && ar[ctr]<=122)  // agar small char,  a - 97 ,z - 122 / A-65 to Z - 90
+      ar[ctr] = ar[ctr]-32;  // a - 97 , A - 65 = 32
+    // if(ar[ctr]>='A' && ar[ctr]<='Z')  // agar capital char,  a - 97 ,z - 122 / A-65 to Z - 90
+    //  ar[ctr] = ar[ctr]+32;  // a- 97 , A - 65 = 32
+    ctr++;
+  }
+  printf("\nLength of String is - %d",ctr);
+  printf("\nWelcome %s",ar);
+  getch();
+}
+
+ 5th - strrev() - for string reverse, but no method in java String class, but in StringBuffer we have. 
+
+     nm = "Anand";
+     strrev(nm);     nm = "dnanA"; 
+     nm = "Manoj123"; strrev(nm);   nm = "321jonaM";
+
+  String reverse without any function
+
+  ctr = 0;
+  while(ar[ctr]!='\0') // loop for count String length.
+     ctr ++; 
+
+  for(i=0,j=ctr-1;i<ctr;i++,j--); // loop for String reverse 
+    arr[i] = ar[j];
+  arr[i]= '\0'; 
+
+  ar = Abhay
+                              i = 0    j = 4 
+  ar[0] = 'A';   ctr = 1     arr[i=0] = ar[j = 4]= 'y'
+  ar[1] = 'b';   ctr = 2     arr[i=1] = ar[j = 3]= 'a'
+  ar[2] = 'h';   ctr = 3     arr[i=2] = ar[j = 2]= 'h'
+  ar[3] = 'a';   ctr = 4     arr[i=3] = ar[j = 1]= 'b'
+  ar[4] = 'y';   ctr = 5     arr[i=4] = ar[j = 0]= 'A'
+  ar[5] = '\0';  ctr = 5     arr[i=5] = '\0'; 
+
+   
+ 6th - int strlen(str); - return the length of String. in java we have length() method
+
+       nm = "Anand"; 
+       x = strlen(nm);   x = 5 - C & C++ 
+       x = nm.length();  x = 5 - java 
+
+ // findout length of String in C without using strlen function. 
+
+  int ctr = 0;
+  while(ar[ctr]!='\0') // string not empty - ctr increment karo. 
+    ctr++;
+  printf("String length is - %d",ctr); 
+
+ for findout length in java - 
+  
+   1.  length - keyword - find out the array length
+   2.  length() - method - find out the string length
+   3.  size() - method - find out the collection length.  
+
+  Collections - Vector , ArrayList, LinkedList, Set, HashSet, TreeSet, HashMap , TreeMap , Hashtable.
+                Vector + Hashtable - both r the synchronized collection. 
+ 
+ 7th - int strcmp(str1,str2) - compare 2 Strings without ignore case - means case sensitive. 
+      in java we have equals(str) & compareTo(str).
+        equals() - return boolean(true/false) , compareTo() return int - diff of ASCII code - same as C 
+
+     it return -   0 - if both strings r equals
+                 +ve - if 1st string is greater
+                 -ve - if 1st string is small.
+
+    ** compare with char by char(with ASCII code) & return the diff of ASCII code. 
+
+      ASCII code - A - 65 to Z - 90
+                   a - 97 to z - 122
+
+     a = "Anand"; b = "Chintu"; 
+     if(strcmp(a,b)>0) - -2 - condition false
+     if(strcmp(b,a)>0) - +2 - condition true
+
+  in java -   if(a.equals(b)) - return false , if equals - return true 
+    or 
+  compareTo() - return int - diff of ascii code - same as strcmp() in C & C++. 
+
+ 8th - int strcmpi(str1,str2) - compare 2 Strings with ignore case - means case in-sensitive. 
+      in java we have equalsIgnoreCase(str) or compareToIgnoreCase(str)
+
+     it return - 0 - if both strings r equals
+               +ve - if 1st string is greater
+               -ve - if 1st string is small.
+       ** compare with char by char(with ASCII code) 
+          & return the diff of ASCII code. 
+
+     a = "ANAND"; b = "anand"; 
+     if(strcmpi(a,b)==0) - 0 - true
+     a = "anand", b "Chintu"; 
+     if(strcmpi(a,b)<0) - -2 - condition true
+   
+     if(strcmpi(b,a)>0) - +2 - condition true
+
+   * it internally convert into one case - may be upper or lower then compare it char by char
+
+  in java -   if(a.equalsIgnoreCase(b)) - return true
+ 
+ 9th - int strncmp(str1,str2,noc) - compare 2 Strings with no of chars - without ignore case - means case sensitive. 
+       in java we have startsWith(str)
+
+     it return - 0 - if both strings r equals
+               +ve - if 1st string is greater
+               -ve - if 1st string is small.
+       ** compare with char by char(with ASCII code) & return the diff of ASCII code. 
+
+       a = "Sandeep";
+       b = "Sanjay";
+       if(strncmp(a,b,3)==0) {}  - compare starting 3 chars - true
+
+       info@agilesoftech.in 
+
+     in java - jab whole string compare karna ho - equals() & equalsIgnoreCase()
+             - jab start se compare karna ho - startsWith()  
+             - jab end se compare karna ho - endsWith()  
+             - jab mid me compare karna ho - means kahi bhi ho
+                int indexOf(String str) - return index of String in String, if String not not found then return -1
+                boolean contains(String str) - return true if String is exist else return false
+                      012345678
+          String s = "Shubham Bajpai says, I m a good boy.";
+          s = s.toLowerCase(); 
+          if(s.indexOf("bajpai")!=-1) - true , it return 8, -1 - jab String index not exist. 
+          if(s.contains("bajpai")) - true
+          if(s.indexOf("girl")!=-1) - false, it return -1 - jab String index not exist. 
+          if(s.contains("girl")) - false
+
+ 10th - int strncmpi(str1,str2,noc) - compare 2 Strings with no of chars with ignore case - means case insensitive. 
+        no method is java for that we need to change into one case may be upper/lower case. 
+
+       it return - 0 - if both strings r equals
+                 +ve - if 1st string is greater
+                 -ve - if 1st string is small.
+       ** compare with char by char(with ASCII code) 
+          & return the diff of ASCII code. 
+
+       a = "SANDEEP";
+       b = "sanjay";
+       if(strncmpi(a,b,3)==0) {} true - compare starting 3 chars with ignore case
+
+  in java
+       String s = "Shubham Bajpai says, I m a good boy.";
+       s = s.toLowerCase(); 
+       if(s.indexOf("bajpai")!=-1) - true
+       if(s.contains("bajpai")) - true
+
+ for String compare in C - strcmp(str1,str2), strcmpi(str1,str2), strncmp(str1,str2,noc), strncmpi(str1,str2,NOC) 
+
+ total method in C & C++ for String handling - 10
+  strcpy() + strcat() + strupr() + strlwr() + strrev() + strlen() + strcmp() + strcmpi() + strncmp() + strncmpi() 
+
+____________________________________________________
+
+void main()
+{
+  int i=0;
+  clrscr();
+  for(i=1;i<=255;i++)
+  {
+   if(i%100==0)
+     getch();
+   printf("%d = %c,",i,i);
+  }
+}
+____________________________________________________
+
+void main()
+{
+   char ar[] = {"Ashutosh"};
+   int x;
+   clrscr();
+ /*
+   x = strlen(ar); // count no if chars in ar String
+   printf("Length of %s is - %d",ar,x);
+ */
+   x = 0;
+   while(ar[x]!='\0') x++;  // x += 1; / x = x + 1;   ,  ++x;  x++ , x--; x--
+   printf("Length of %s is - %d\n",ar,x);
+ /*
+   // strupr()
+   strupr(ar);
+   printf("String is Upper case - %s\n",ar);
+ */
+/* x = 0;
+   while(ar[x]!='\0')
+   {
+      if(ar[x]>='a' && ar[x]<='z')  // for lower if(ar[x]>='A' && ar[x]<='Z')
+	 ar[x] = ar[x]-32;               //  ar[x] = ar[x]+32;
+      x++;
+   }
+   printf("String is Upper case - %s\n",ar);
+ */
+// for String toggle
+   x = 0;
+   while(ar[x]!='\0')
+   {
+      if(ar[x]>='a' && ar[x]<='z')   // A - 65 , a - 97 , diff - 32
+	 ar[x] = ar[x]-32;   // Upper case
+      else if(ar[x]>='A' && ar[x]<='Z')
+	 ar[x] = ar[x]+32;
+      x++;
+   }
+   printf("String is Toggle case - %s\n",ar);
+
+   getch();
+
+}
+_______________________________________________
+
+// input - uid + pass         output  - validate - uid = ADITI - in any case
+//                                      pass = sharma@ - should be in same case
+// logic - uid compare - strcmpi() , pass compare - strcmp()
+// string input & compare with case & without case.
+// uid is the case in-senstive - may be in upper case or lower case for that
+// we need to use strcmpi() , but pass is the case senstive - only one case
+// for that we need to strcmp() function.
+
+#include<string.h>
+void main()
+{
+   char uid[10],ps[10],c;
+   int x = 0;
+   clrscr();
+   gotoxy(15,10);
+   printf("Plz Enter ur User Id : ");
+   gotoxy(15,12);
+   printf("Plz Enter ur Password: ");
+   gotoxy(38,10);
+   gets(uid); // get userid with user input.
+   gotoxy(38,12);
+  // scanf("%s",ps);
+   while(1)
+   {
+      c = getch(); // get any char from keyboard, but not display that
+      if(c==13) // if enter key pressed by user , 13 ASCII code - enter key
+	 break;
+      ps[x++] = c; // post incr - 1st value store 0th index & incr by 1
+      printf("$");
+   }
+   ps[x] = '\0'; // insert null char at index of x for terminate the string.
+   if(strcmpi(uid,"aditi")==0 && strcmp(ps,"sharma@")==0)
+   {
+      clrscr();
+      gotoxy(15,12);
+      printf("Welcome's U, U r a valid User...");
+      gotoxy(5,22);
+      printf("Press any key for contd....");
+      getch();
+   }
+   else
+   {
+      gotoxy(30,3);
+      printf("Sorry This invalid Login Id & Password,try again...");
+      gotoxy(5,22);
+      printf("Press any key for contd....");
+      getch();
+   }
+   x = 0;
+   while(ps[x++]!='\0');
+   printf("\n\n\n ur userid is - %s , pass is - %s , length of pass is - %d",uid,ps,x);
+   getch();
+
+}
+/*
+  13 is the enter key code in any language.
+
+     c = getch()     print - $   , store pass in ps[x] , x = 0
+     s               $               ps[x=0] = 's' , x++ x = 1
+     h               $               ps[x=1] = 'h' , x++ x = 2
+     a               $               ps[x=2] = 'a' , x++ x = 3
+     r               $               ps[x=3] = 'r' , x++ x = 4
+     m               $               ps[x=4] = 'm' , x++ x = 5
+     a               $               ps[x=5] = 'a' , x++ x = 6
+     @               $               ps[x=6] = '@' , x++ x = 7
+   Enter code        ---          exit from loop - ps[x=7] = '\0';
+
+    ASCII - 0 to 255, every number assciate with a char value , space - 32,
+    A - 65 to Z - 90 , a - 97 to z - 122
+    Problem with C - work with 256 charset support. Java - char size 2 bytes - 512 char set support.
+    256 - english only.
+*/
+_______________________________________________
+
+// count repeat.
+void main()
+{
+  char ar[] = {"hello friends, i am ashutosh tiwari from hiet college ghaziabad, i am a btech third year student"};
+  int count[26] = {0};
+  int x,ctr=0;
+  clrscr();
+  while(ar[ctr]!='\0')
+  {
+    if(ar[ctr]>='a' && ar[ctr]<='z')
+    {
+    //  printf("ar[%d] = %c, count[%d]\n",ctr,ar[ctr],ar[ctr]-'a');
+      x = ar[ctr] - 'a';  // h - 104 , a - 97
+      count[x]++;
+    //  getch();
+    }
+    ctr++;
+  }
+  for(x=0;x<26;x++)
+   if(count[x]!=0)
+    printf("%c - %d ,  \n",x+'a',count[x]);
+  getch();
+
+}
+________________________________________________    

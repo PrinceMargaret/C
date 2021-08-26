@@ -1,0 +1,176 @@
+  Focus on Core Concepts - Core of C, Core of Java, Core of Python.
+
+  Java is the Case sensitive - focus on Pascal & Camel case.  - easy in Java
+
+  Major Questions - Arrays + String + Logics related. 
+
+  Data types in C + Header files C + functions in C + Looping & Conditions in C
+
+ implementation - 
+
+      input (lena kya hai) ->  Processing(based on Input & output ) <-   Output (dena kya hai)
+                  1                           3                                      2
+
+   always work with free mind & step by steps. 
+
+
+ how to work C - 
+
+ 1st - we need to include header files, stdio.h & conio.h but no for C compiler, that is default import in C compiler
+       for file handling we need to include that. 
+
+  #include<stdio.h> - include from lib folder - means include folder - include from lib location.
+      or
+  #include "stdio.h" - use for include the own header files, apni header file ko include karna hai to aap "" use karo
+                       we can include .c & .txt file also - means include from user location
+
+   Q- what is the diff b/w both statement? 
+
+   header files?
+    - contain the lib function/pre define functions/inbuild functions
+
+      stdio - standard Input Output -.h - header file
+      conio - console Input output - console means dos in windows or terminal window in Unix
+              & Linux operating System. 
+
+    Q- we can design own header files or not, if yes then what is the need of that. 
+   Ans - yes can design, just save with .h extension or we can include .c or .txt file also. 
+
+    need / use - use for implement the Modular Approach - 
+
+      * Simplicity - easy to use
+      * Reusability - design once & can/run any where
+      * Performence Improve 
+      * Error Handling & debugging easy 
+      * Team work & Time Management.
+
+  ** but no need for include for C compiler. 
+
+ 2nd - program always start with void main() function. 
+
+ Q- how many type we have main function in C?
+
+    in Java - main method -  public static void main(String args[]) {}
+
+      public - access modifier
+      static - keyword, for direct calling JVM without creating object of this class.
+                 static data members can be call direct - with classnamme
+
+      void - return type, void means no return any value. 
+      main() - method, 1st method to be called by the JVM before calling any method, but after static block.
+ 
+ -> program execution 
+      in C - 1st preprocessor call honge then main call hoga - jo # ke saath use hai - 
+              #include - for file input
+              #define - for design the global var - use for array size / looping ke inside use karte ho
+              #pragma - for call the function before & after main function. 
+
+                  #pragma startup funName priority - 0 to 63 - C lib priority - we can use that, 64 to 255 user priority. 
+                  #pragma exit funName priority          
+
+      in Java - 1st static blocks call honge then main call hoga. 
+  
+  Q- what is default return type of function in C?
+Ans- default return of function in C - int
+  
+    programming - 
+      void main()  / int main() / main()  
+    
+      String - class , args[] - array of the String class that is used for command line arguments. 
+
+   main in C - we have 2 Types main function - 
+
+      void main() - without command line arguments.
+      void main(int argc,char argv[]) - for command line argument - use with same argument name - argc & argv hi use karna hai
+
+        
+ 3rd - all declaration before calling any function. 
+
+ 4th - for console output we can use printf() function or for console input we can use scanf() functions. 
+   
+        printf() - print with format., scanf() - scan with format. , Java - Scanner class - C ke inside scan
+
+   * C ke inside jo use karna hai wo small letter me hi use karna hai excluding FILE type/pointer.
+
+    Q- what is the return of printf() & scanf() function? 
+
+  Ans- both function return type is int, printf() - return no of chars, -  x = printf("Welcome");  x = 7
+ 
+       scanf() - return no of inputs - 1 input - return 1 , 2 - inputs - reurn 2, three input -return 3. 
+  
+    scanf() use - syn -  scanf("%d %d %d",&a,&b,&c);   - but no need to use & with string. - string means char arrays. 
+  
+     Q - we can pass msg inside scanf(), that is possible or not?
+         ex -  scanf("Value of a is = %d",&a);
+
+     now we want to store 1000 value in a , for that we need to input with same msg 
+
+            input -  Value of a is 1000          now a = 1000 
+                     (scanf msg ) (value of a)
+
+   we can perform runtime input with - gets() / getch() / getche() also
+
+     gets(name); - input value with space also. until enter key press. 
+     getch() - get any char from keyboard but not display that. 
+     getche() - get any char from keyword & display also. 
+                   get - input , ch - char , e - echo - display 
+
+  Major use of getch() - for hold the output screen. but getch() also use for design the encrypted based application
+                         like - password program.
+         getche() use for choice based application, Menu design - Confirmation - Do U want to same change - Y / N
+
+  Looping - for loop + while + do while loop. 
+
+    best loop - while loop - problem with for loop - more slow - bcos initialize every time/step. 
+                problem with do while - one execution must, do loop - one time execute then check condition, if condition
+                is true then execution contd.. else terminate. 
+          Output based Question - always with while - 80% , 10-20% for 
+
+      for(initialize;condition;incr/decr) {} 
+
+ ** we can use any number of initialization & increment + decrement also - in any language - C, C++, Java, other language also
+       for(i=1,j=10;i<=10;i++,j--) {} 
+     ** but condition always 1 hi use karna hai... 
+
+ in java we have one extra loop also that is for each loop - for loop enhance version - only use with arrays & collection classes. 
+     syn - for(String n : ar) {}
+
+  problem solving - Language - concat options - strcat() , sprintf() - return concated string.
+      input 1234 , output in word - one thoudand hundred thirty four only. 
+
+  conditions - if - else if - else , switch - case.
+ 
+    problem with switch case kya hai - agar break use nahi kiya to saare statement ko call karega. 
+
+  data types in C - primitive data types, int, char, long, float, double, + combination type also supported.
+                     long int / long double.
+
+   size of char data type - 1 byte - fixed, this the major problem with C - it support only 256 char set. 
+          but in java - size of char data type is 2 bytes - for 512 charset support. - national char set also. 
+
+   size of int data type - may be 2 bytes / 4 bytes - depends on compiler.  32 bits compiler - size of int 2 bytes / 64 bit compiler - size of int 2 bytes
+
+    printf("format",var); 
+
+     %d - for decimal values
+     %u - unsigned Long - Pointer - address print purpose - %u
+     %%ld - for long decimal values
+     %c - for char input 
+     %f - for float value
+     %s - for String value. 
+
+   
+
+
+ 
+
+    
+
+     
+    
+      
+ 
+
+
+
+
