@@ -1,3 +1,4 @@
+ 
  - for implement linked List in C & C++, 1st we need to design a struct type with Node name
  Array is the collection of similar kind of data items, that share a common name. & linked also the collection of similar
  of data items that share a common name, but major diff in Array & linked List, in array we can't add / remove the elements
