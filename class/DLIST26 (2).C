@@ -1,20 +1,4 @@
-/*
-   Q- what is the Live example of LinkedList ?
- Ans- any type of data store in system buffer, stored as LinkedList.
-   Q- what is the Live example of Double LinkedList?
- Ans- Undo + redu in IDE & browser back + forward button, Image viewer – Previous and next images are the Live example
-      of linked List, PlayList design in Media Player.
-   Q- what is the Live example of Stack?
- Ans- function calling in C & C++, Recursive function calling & OS is the best example stack.
-   Q- Live example for Queue ?
- Ans- Songs play in Player / database accept request from the client & process that, printer - spooling, file save + open
-      + Internet browsing, audio & video recording & playing. 
-
- Wel.c -> after Compile - 3 Files design - 1. Wel.exe (Executable) + Wel.obj - Object file - linking file - both file
-                          design inside bin folder, + Wel.bak - Backup file contain the errors, if no error in ur source
-                          code then design the backup of ur code. 
-  
-*/
+// HW - work on addMid() + del() function + List Sorting - with loop.
 #include<stdio.h>
 struct Node
 {
@@ -94,17 +78,9 @@ void del()
        if(n==curr->x) // if node exist.
        {
 	 if(fst==curr) // if selected node is the 1st Node
-	 {
-            fst = curr->next;
-            fst->prev = NULL;
-         }
-         else if(curr->next == NULL) // if selected node is the last node
-	    pptr->next = curr->next;
-         else // if selected node is the mid or last node.
-	 {
-            pptr->next = curr->next;
-            curr->next->prev = pptr;
-         }
+	   fst = curr->next;
+	 else // if selected node is the mid or last node.
+	   pptr->next = curr->next;
 	 free(curr);
 	 flag = 1;
 	 break;
@@ -136,13 +112,8 @@ void addMid()
 	  tmp = (struct Node *)malloc(sizeof(tmp));
 	  printf("\n Plz Enter Node value : ");
 	  scanf("%d",&tmp->x);
-         // for right side link.
-          curr->next->prev = tmp;
-          tmp->next = curr->next;
-        // for left side link
-          curr->next = tmp;
-          tmp->prev = curr; 
-
+	  tmp->next = curr->next;
+	  curr->next = tmp;
 	  printf("\n\nNode Successfully Inserted...");
 	  break;
        }
@@ -150,32 +121,13 @@ void addMid()
     }
   }
 }
-// for sorting
-void sort()
-{
-   int x;
-   for(pptr=fst;pptr->next!=NULL;pptr=pptr->next)
-   {
-      for(curr=pptr->next;curr!=NULL;curr=curr->next)
-      {
-	 if(pptr->x > curr->x)
-	 {
-	    x = pptr->x;
-	    pptr->x = curr->x;
-	    curr->x = x;
-	 }
-      }
-   }
-   printf("\n\n\t Values successfully Sort.............");
-}
-
 void main()
 {
    char c;
    while(1)
    {
      clrscr();
-     printf("\n\n\t\t1. Add New Node in Beginning.\n\n\t\t2. Add New Node in Last\n\n\t\t3. Add New Node in Mid \n\n\t\t4. List of All Node Values. \n\n\t\t5. Delete Existing Node \n\n\t\t6. for Sort values\n\n\t\t0. Exit\n\n\t Plz Enter ur Choice : ");
+     printf("\n\n\t\t1. Add New Node in Beginning.\n\n\t\t2. Add New Node in Last\n\n\t\t3. Add New Node in Mid \n\n\t\t4. List of All Node Values. \n\n\t\t5. Delete Existing Node \n\n\t\t0. Exit\n\n\t Plz Enter ur Choice : ");
      c = getche();
      if(c=='1')
 	addFirst();
@@ -187,13 +139,10 @@ void main()
 	disp();
      if(c=='5')
 	del();
-     if(c=='6')
-	sort();
      if(c=='0')
        break;
      getch();
    }
 }
-
 
 

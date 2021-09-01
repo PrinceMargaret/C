@@ -1,0 +1,797 @@
+  jdk1.5 - Scanner class + for each loop + Loop Labels + Generics + Annotations + Varagrs + Enum  
+
+Java Annotations : Java Annotation is a tag that represents the metadata i.e. attached 
+                   with class, interface, methods or fields to indicate some additional
+  information which can be used by java compiler and JVM.
+  Annotations in java are used to provide additional information, so it is an alternative
+  option for XML and java marker interfaces.
+ - Annotation concept add in jdk1.5 for notification purpose
+
+Built-In Java Annotations used in java code
+
+ @Override - @Override annotation assures that the subclass method is overriding the 
+             parent class method. means notify that this is the parent class method
+             we r just overriding that. 
+ @SuppressWarnings - @SuppressWarnings annotation: is used to suppress (Dabana)
+                     warnings issued by the compiler.
+ @Deprecated - @Deprecated annoation marks that this method is deprecated so compiler
+               prints warning.
+
+ Config & Validation Annotations in Servlets, Struts, Hibernate & Spring 
+
+  ** in whole java jo bhi @ ke saath likha hai/use hua hai wo annotation ka part hooga. 
+
+Variable Argument (Varargs): add in jdk1.5
+
+ The varrags allows the method to accept zero or muliple arguments. Before varargs 
+ either we use overloaded method or take an array as the method parameter but it was 
+ not considered good because it leads to the maintenance problem. 
+ If we don't know how many argument we will have to pass in the method, varargs is 
+ the better approach.
+
+ we want to design one method that can accept 0 more multiple arguments.
+
+   sum()
+   sum(10)
+   sum(10,20,30,40,50,60,70)
+   sum(10,20,30)
+   sum(10,20,30,50)
+
+ before jdk1.5 - we need to ooverload the sum function - no argu ,1,2,3,4,5,6,7,8,9,10 & with array 
+
+ in jdk1.5 we can use varagrs 
+    void sum(int ... ar)
+    {
+      int s = 0;
+      for(int n : ar)
+        s += n;
+      System.out.println("Sum is = "+s);
+    }
+
+   for calling - sum();            - print sum is = 0
+                 sum(10,20,30);    - print sum is = 60
+
+    public static void main(String aa[]) 
+    public static void main(String ... aa) 
+
+   Autoboxing and Unboxing: The automatic conversion of primitive data types into its
+   equivalent Wrapper type is known as boxing and opposite operation is known as 
+   unboxing. This is the new feature of Java1.5 So java programmer doesn't  need to 
+   write the conversion code.
+ 
+    int a = 50;  
+    Integer a2 = new Integer(a); //Boxing  
+    Integer a3 = 5; //Boxing  
+    System.out.println(a2+" "+a3);  
+
+    Integer i=new Integer(50);  
+    int a = i;  // //unBoxing         List<Integer> a = new ArrayList<>();  a.add(10); a.add(20); 
+    System.out.println(a);            for(int n : a)  System.out.println(a);
+     
+    int - wrapper of Integer class
+    float - wrapper of Float class
+    long -  wrapper of Long class
+    double - wrapper of Double class 
+    char   - wrapper of Charactor class
+
+  **  jab bhi privitive data type ko as a object use karenge to wo blong
+      karenge wrapper class ko
+
+before 1.7 - switch case only allow - byte , char , short , int 
+  
+String in Switch Statement
+
+  In Java jdk1.7, Java allows you to use string objects in the expression of switch 
+  statement. In order to use string,
+  you need to consider the following points:
+  -> It must be only string object.    String s = "Manoj"; - valid    Object o = s; - switch use o - error
+  -> String object is case sensitive.
+  -> null object not allowed.
+
+        String game = "Cricket";  
+        switch(game){  
+          case "Hockey":  
+            System.out.println("Let's play Hockey");  
+            break;  
+          case "Cricket":  
+            System.out.println("Let's play Cricket");  
+            break;  
+          case "Football":  
+            System.out.println("Let's play Football");  
+        } 
+
+        String game = "Cricket";  
+        switch(game){  
+          case "Hockey":
+          case"Cricket":
+          case "Football":  
+            System.out.println("This is a outdoor game");  
+            break;  
+          case "Chess": case "Card-Games": case "Puzzles":  
+            System.out.println("This is a indoor game");  
+            break;  
+         default:   
+            System.out.println("What game it is?");  
+        }  
+    }
+
+ switch(x)
+  {
+    case 1 : 
+    case 2 : 
+    case 3 :
+    case 4 :
+      System.out.println(" < 4 ");
+      break;
+  }
+     diff b/w C & C++ structure - in C Structure we can't define functions but in C++
+                                  structure we can define function.
+
+     diff b/w structure & class - in C++.
+
+                structure 			class
+95-99% - students ans -  
+  * not support the OOPs concept       * support the OOPs concept
+  * default access modifier - public   * default access modifier private. 
+ 
+ 1 - 5% ans
+  * stored in stack memory - fast      * stored in heap memory - slow.
+ 
+Java Enum: Enum in java is a data type that contains fixed set of constants.
+    It can be used for days of the week (SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY and SATURDAY) ,
+    directions (NORTH, SOUTH, EAST and WEST) or months etc . The java enum constants 
+    are static and final implicitly. It is available from JDK 1.5.
+
+  Points to remember for Java Enum
+    1. enum improves type safety
+    2. enum can be easily used in switch
+    3. enum can be traversed
+    4. enum can have fields, constructors and methods
+    5. enum may implement many interfaces but cannot extend any class because
+       it internally extends Enum class
+
+  enum Season { WINTER, SPRING, SUMMER, FALL }  
+  class Demo1
+  {  
+    public static void main(String[] args) {  
+      Season s=Season.WINTER;  
+      System.out.println(s);  
+    }
+  }
+  or
+
+  class Demo1
+  {  
+    enum Season { WINTER, SPRING, SUMMER, FALL }  
+    public static void main(String[] args) {  
+      Season s=Season.WINTER;  
+      System.out.println(s);  
+    }
+  }
+
+in C & C++  enum Days{  int sun,mon,tue=6,wed,thu,fri=9,sat; };
+
+// enum with values 
+class Str
+{
+  enum Season
+  {
+    WINTER(5), SPRING(10), SUMMER(15), FALL(20);   
+    private int value;  
+    private Season(int value){  
+      this.value=value;  
+   }  
+  }  
+  public static void main(String args[]){  
+   for (Season s : Season.values())  
+       System.out.println(s+" "+s.value);  
+  }
+} 
+ 
+  
+Aggregation in Java - If a class have an entity reference, it is known as Aggregation.
+ Aggregation represents HAS-A relationship.
+   is-A relation - sub class , HAS-A relation - non sub class 
+ 
+Q- When use Aggregation?
+Ans- Code reuse is also best achieved by aggregation when there is no is-a relationship.
+     Inheritance should be used only if the relationship is-a is maintained throughout
+     the lifetime of the objects involved; otherwise, aggregation is the best choice.  -  has a relation 
+
+public class Address 
+{  
+  String city,state,country;  
+  public Address(String city, String state, String country) 
+  {  
+    this.city = city;  
+    this.state = state;  
+    this.country = country;  
+  }  
+} 
+
+class Emp 
+{  
+  int id;  
+  String name;  
+  Address address;  
+  public Emp(int id, String name,Address address) {  
+    this.id = id;  
+    this.name = name;  
+    this.address=address;  
+  }  
+  void display()
+  {  
+    System.out.println(id+" "+name);  
+    System.out.println(address.city+" "+address.state+" "+address.country);  
+  }  
+  public static void main(String[] args) 
+  {  
+     Address address1=new Address("gzb","UP","india");  
+     Address address2=new Address("gno","UP","india");  
+     Emp e = new Emp(111,"varun",address1);  
+     Emp n = new Emp(112,"arun",address2);  
+     e.display();  
+     n.display();  
+  }  
+}
+   
+________________________________________________________________________________________________
+
+Java 7 Catch Multiple Exceptions
+
+ Java allows you to catch multiple type exceptions in a single catch block. It was 
+ introduced in Java 7 and helps to optimize code.
+ You can use vertical bar (|) to separate multiple exceptions in catch block  
+ 
+      catch(ArithmeticException | ArrayIndexOutOfBoundsException e) {}
+      catch(Exception | ArithmeticException | ArrayIndexOutOfBoundsException e){} - error - The exception ArithmeticException is already caught by the alternative Exception
+
+ The try-with-resources statement - in jdk1.7
+    try - old concept  
+    {
+       FileInputStream r = new FileInputStream("Data.txt");
+       FileOutputStream w = new FileOutputStream("Data1.txt");
+       int x;
+       while((x=r.read())!=-1)
+         w.write(x);
+       w.close();
+       r.close();
+    }
+    catch(Exception ex) {}
+  In Java, the try-with-resources statement is a try statement that declares one or
+  more resources. The resource is as an object that must be closed after finishing 
+  the program. The try-with-resources statement ensures that each resource is closed
+  at the end of the statement execution.
+
+   try(FileInputStream r = new FileInputStream("fileIO.txt")){
+     or
+   try(FileInputStream r = new FileInputStream("fileIO.txt");
+       FileOutputStream w = new FileOutputStream("fileIO.txt");)
+   {
+       we can use r & w object in whole try block - current try only. 
+   }  
+
+Type Inference(diamond) for Generic Instance Creation - 
+
+  In Java 7, Java provides improved compiler which is enough smart to infer the type 
+  of generic instance. Now, you can replace the type arguments with an empty set of 
+  type parameters (<>). This pair of angle brackets is informally called the diamond. 
+
+   Generics add in  jdk1.5 - 
+      Vector<String> v = new Vector<String>();
+      List<Integer> a = new ArrayList<Integer>();  - jdk < 1.7
+      List<Integer> list = new List<>();  - in jdk>=1.7 // Here, we just used diamond  
+
+Java Lambda Expressions - add in jdk1.8 - it is replacement of Anonymous class concept. 
+
+Lambda expression is a new and important feature of Java which was included in Java 
+SE 8. It provides a clear and concise way to represent one method interface using an
+expression. It is very useful in collection library. It helps to iterate, filter and 
+extract data from collection. Before lambda expression, anonymous inner class was the
+only option to implement the method.
+
+In other words, we can say it is a replacement of java inner anonymous class. Java 
+lambda expression is treated as a function, so compiler does not create .class file.
+
+  Why use Lambda Expression
+
+   -> To provide the implementation of Functional interface.
+   -> Less coding.
+
+   Syntax - (argument-list) -> {body}
+
+   Java lambda expression is consisted of three components.
+
+    1) Argument-list: It can be empty or non-empty as well.
+    2) Arrow-token: It is used to link arguments-list and body of expression.
+    3) Body: It contains expressions and statements for lambda expression.
+  
+Java Example without Lambda Expression - 
+
+  interface Drawing{  
+    public void draw();  
+  }  
+  public class MyDraw
+  {  
+    public static void main(String[] args) 
+   {  
+        int width=10;  
+        //without lambda, Drawable implementation using anonymous class  
+        Drawing d=new Drawing(){  
+            public void draw(){System.out.println("Drawing "+width);}  
+        };  
+        d.draw();  
+    }  
+  }
+ 
+    addWindowListener(new Win()); - with the help of inner class
+  }
+  class Win extends WindowAdapter
+  {
+     public void windowClosing(WindowEvent e)
+     {   dispose(); }
+  }
+   or
+
+  - with Anonymous class 
+     addWindowListener(new WindowAdapter()
+     {
+       public void windowClosing(WindowEvent e)
+       {   dispose(); }
+     });
+
+
+Java Example with Lambda Expression - 
+ 
+  interface Drawing{  
+    public void draw();  
+  }  
+  public class MyDraw
+  {  
+    public static void main(String[] args) {  
+        int width=10;  
+        //with lambda  
+        Drawing d=()->{  
+            System.out.println("Drawing "+width);  
+        };  
+        d.draw();  
+    }  
+  }
+
+  interface A
+  {  
+    public String say(String name);  
+  }  
+  public class My1
+  {  
+    public static void main(String[] args) {  
+       // Lambda expression with single parameter.  
+        A o =(name)->{  
+            return "Hello "+name;  
+        };  
+        System.out.println(o.say("Pandey"));  
+        A k =(String name)->{  
+            return "Hello "+name;  
+        };  
+        System.out.println(k.say("shukla"));  
+          
+        // You can omit function parentheses    
+        A n = name ->{  
+            return "Hello, "+name;  
+        };  
+        System.out.println(n.say("Jai"));  
+    }  
+ } 
+
+ interface Calc
+ {
+    default void sub(int a,int b) // default method - with body. 
+    {
+       int c = a - b;
+       System.out.println("Sum is = "+c);  
+    }
+    int add(int a,int b);  
+ }  
+ public class My2
+ { 
+    public static void main(String[] args) {  
+        // Multiple parameters in lambda expression  
+        Calc o = (a,b)-> (a+b);  
+            //   (argu/s) -> {  body }  
+            //   (argu/s) -> ( body )  - if return type diya hai to   
+
+        System.out.println(o.add(10,20));  
+        o.sub(100,20);
+        // Multiple parameters with data type in lambda expression  
+        Calc n =(int a,int b)->(a+b);  
+        //Calc n =(int a,int b)->{ return(a+b); }  
+        System.out.println(n.add(100,200));  
+        n.sub(100,20);
+    }  
+}   
+/*
+    without lambda - 
+
+ public class My
+ {
+     // with Inner class 
+     class MyCalc implements Calc
+     {
+         public int add(int a,int b)
+         {
+             return a + b;
+         }
+     }
+     MyCalc o = new MyCalc();
+     System.out.println(o.add(100,20)); 
+     o.sub(100,20);
+
+        or
+
+     // with Anonymous class
+     Calc o = new Calc() 
+     {
+         public int add(int a,int b)
+         {
+             return a + b;
+         }
+     };
+     System.out.println(o.add(100,20)); 
+     o.sub(100,20);
+
+*/
+   
+   
+
+1.Java Functional Interfaces - An Interface that contains exactly one abstract method
+  is known as functional interface. It can have any number of default, static methods 
+  but can contain only one abstract method,  It can also declare methods of object class.
+  It is a new feature in Java, which helps to achieve functional programming approach.
+  - add in jdk1.8
+
+   default void disp()
+   {  
+      System.out.println("I m inside disp.");  
+   }  
+   static void show() - only call direct with interface name & can't override in child class
+   {  
+        System.out.println("I m inside show.");  
+   }  
+
+   default methods - can override in child class & only call with objects.
+   static methods - can't override in child class & only call with interface name. 
+ 
+ interface Calc
+ {  
+   default void disp()
+   {  
+       System.out.println("I m inside disp.");  
+       show(); // can call 
+   }  
+   static void show() // - can call direct with interface name.
+   {  
+        System.out.println("I m inside show.");  
+       // disp(); // error - static method can use/call only staic members
+   }  
+ }  
+ 
+ public class FuncInter implements Calc
+ { 
+    public static void main(String[] args) {  
+        FuncInter o =new FuncInter();
+        o.disp();
+        Calc.show(); 
+    }  
+}   
+
+ interface Calc
+ {  
+   default void sum(int a,int b)
+   {  
+      int c = a + b;
+      System.out.println("Sum is = "+c);  
+   }  
+   default void sub(int a,int b)
+   {  
+      int c = a - b;
+      System.out.println("Sub is = "+c);  
+   }  
+   void multi(int a,int b); 
+ }  
+ 
+ public class FuncInter1 implements Calc
+ { 
+    public static void main(String[] args) {  
+        Calc o = (a,b)->{  
+            int c = a * b; 
+            System.out.println("Multi is = "+c);
+        };  
+        o.sum(100,20);
+        o.sub(100,20);
+        o.multi(100,20);
+    }  
+}   
+
+  ** now in jdk1.8 Abstract class & interfaces both r same, but there is only one 
+     diff we can't design Constructor in interface but can define in Abstract class.
+     otherwise both r same. 
+     in jdk1.9 we can design private methods also. 
+
+  ** Java provides a facility to create default methods inside the interface. 
+     Methods which are defined inside the interface and tagged with default are 
+     known as default methods. These methods are non-abstract methods.
+
+
+2.Java Method References - Java provides a new feature called method reference in 
+  Java 8. Method reference is used to refer method of functional interface. It is 
+  compact and easy form of lambda expression. Each time when you are using
+  lambda expression to just referring a method, you can replace your lambda expression 
+  with method reference.
+
+   There are four types of method references:
+
+    1. Reference to a static method.
+    2. Reference to an instance method of a particular object.
+    3. Reference to an instance method of an arbitrary(ManMaana) object of a particular type. - same as pointer function concept of C & C++ 
+    4. Reference to a constructor.
+
+    ** method ref is the replacement of pointer functions of C & C++. 
+       pointer function/function pointer - can hold the ref of any function .
+
+1. Reference to a static method.
+  interface A
+  {  
+    void me();  
+  }  
+  public class B
+  {  
+    public static void you()
+    {  
+        System.out.println("Hello, I m inside U function.");  
+    }  
+    public static void main(String[] args) 
+    {  
+        // Referring static method  
+        A n = B::you;  
+        n.me();  
+    }  
+  }
+
+  import java.util.function.BiFunction;  
+  class A
+  {  
+    public static int add(int a, int b){ return a+b;  } 
+  }  
+  public class C
+  {  
+    public static void main(String[] args) 
+    {         // returntype,1st argu,2nd argu, n 
+       BiFunction<Integer, Integer, Integer> obj = A::add;  
+       int x = obj.apply(10, 20);  
+       System.out.println("Sum is = "+x);  
+    }  
+  }  
+
+2. Reference to an instance method of a particular object.
+
+  interface A
+  {  
+    void me();  
+  }  
+  public class B
+  {  
+    public void you()
+    {  
+        System.out.println("Hello, I m inside U function.");  
+    }  
+    public static void main(String[] args) 
+    {  
+        // Referring non static method using reference  
+        B n = new B();
+        A o = n::you;  
+       // or 
+        A o = new B()::you;  
+        o.me();  
+    }  
+  }
+
+  import java.util.function.BiFunction;  
+  class A
+  {  
+    public int add(int a, int b){ return a+b;  } 
+  }  
+  public class C
+  {  
+    public static void main(String[] args) 
+    {  
+       BiFunction<Integer, Integer, Integer> obj = new A()::add;  
+      // A o = new A();
+      //  BiFunction<Integer, Integer, Integer> obj = o::add;  
+
+       int x = obj.apply(10, 20);  
+       System.out.println("Sum is = "+x);  
+    }  
+  }  
+
+
+  Anonymous object - 
+
+   Application programing - 
+      Font f = new Font("Courier New",0,13);
+      setFont(f);  - named object. 
+         or
+      setFont(new Font("Courier New",0,13)); - anonymous object 
+
+  4. Reference to a constructor.
+
+  interface A
+  {  
+    void me();  
+  }  
+  public class B
+  {  
+    public void you()
+    {  
+        System.out.println("Hello, I m inside U function.");  
+    }  
+    public static void main(String[] args) 
+    {  
+        // Reference to a constructor.
+        A o = B::new;
+        o.me();  
+    }  
+  }
+
+------------------------------------------------------------------------------------------------------------------
+
+java for each loop - add in 1.5 
+Java forEach() method loop - in jdk1.8 
+
+ Java provides a new method forEach() to iterate the elements. It is defined in Iterable and Stream interface. 
+ It is a default method defined in the Iterable interface. Collection classes which extends Iterable interface 
+ can use forEach loop to iterate elements. - add in jdk1.8 
+
+ This method takes a single parameter which is a functional interface. So, you can pass lambda expression as an argument.
+
+ import java.util.ArrayList;  
+ import java.util.List;  
+ public class ForEach 
+ {  
+    public static void main(String[] args) 
+    {  
+        List<String> a = new ArrayList<>();  
+        a.add("Jai");  
+        a.add("Ajai");  
+        a.add("Babu");  
+        a.add("Raju");  
+        a.add("Kalu");
+        System.out.println("------------Iterating by passing lambda expression--------------");  
+        a.forEach(n -> System.out.println(n));  
+        System.out.println("------------Iterating by passing method reference---------------");  
+        a.forEach(System.out::println);  
+        System.out.println("------------Iterating by passing lambda expression--------------");  
+        a.stream().forEachOrdered(n -> System.out.println(n));  
+        System.out.println("------------Iterating by passing method reference---------------");  
+        a.stream().forEachOrdered(System.out::println); 
+    }  
+}  
+
+
+Java StringJoiner - Java added a new final class StringJoiner in java.util package. 
+It is used to construct a sequence of characters separated by a delimiter. Now, you
+can create string by passing delimiters like comma(,), hyphen(-) etc. 
+You can also pass prefix and suffix to the char sequence.- jdk1.8 
+
+Constructor - public StringJoiner(CharSequence delimiter,CharSequence prefix,CharSequence suffix)
+
+// importing StringJoiner class  
+import java.util.StringJoiner;  
+public class SJ 
+{  
+    public static void main(String[] args) 
+    {  
+        //StringJoiner a = new StringJoiner(","); // passing comma(,) as delimiter  
+        //StringJoiner b = new StringJoiner(":"); // passing comma(:) as delimiter  
+         StringJoiner a = new StringJoiner(",", "[", "]");   // passing comma(,) and square-brackets as delimiter   
+         StringJoiner b = new StringJoiner(",", "{", "}");   // passing comma(,) and square-brackets as delimiter   
+        // Adding values to StringJoiner  
+        a.add("Rahul");  
+        a.add("Raju");  
+        a.add("Babu");  
+        a.add("Kalu");  
+        b.add("Pooja");
+        b.add("Priya");
+        b.add("Pinki");
+        System.out.println(a);  
+        System.out.println(b);  
+        // Merging two StringJoiner  
+        StringJoiner merge = a.merge(b);   
+        System.out.println(merge); 
+    }  
+}  
+___________________________________________________________________________________________________________________
+
+Java Optional Class-Java introduced a new class Optional in jdk8. It is a public 
+final class and used to deal with NullPointerException in Java application. You must
+import java.util package to use this class. It provides methods which are used to 
+check the presence of value for particular variable. - add in jdk1.8 
+
+public class Opt 
+{  
+    public static void main(String[] args) 
+    {  
+      String[] str = new String[10];  
+      String lw = str[5].toLowerCase();   - we have null pointer exception
+      System.out.print(lw);  
+    }  
+}  
+
+import java.util.Optional;  
+public class Opt1
+{  
+    public static void main(String[] args) 
+    {  
+        String[] str = new String[10];  
+        Optional<String> n = Optional.ofNullable(str[5]);  
+        if(n.isPresent()){  // check for value is present or not  
+          String lw = str[5].toLowerCase();  
+          System.out.print(lw);  
+        }else  
+          System.out.println("string value is not present");  
+    }  
+}  
+
+ Java Version -  jdk1.5 /1.6/1.7  /1.8  / 1.9
+ Java class Version-49.0/50.0/51.0/52.0 / 53.0
+ JVM Version 
+ JVM
+
+  
+
+import java.util.Optional;  
+public class Opt2
+{  
+    public static void main(String[] args) 
+    {  
+        String[] str = new String[10]; 
+        str[5] = "Pandey is a good boy."; 
+        Optional<String> n = Optional.ofNullable(str[5]);  
+        if(n.isPresent()){  // check for value is present or not  
+          String lw = str[5].toLowerCase();  
+          System.out.print(lw);
+          n.ifPresent(System.out::println);   // printing value by using method reference  
+          System.out.println("\n"+n.get());    // printing value by using get method    
+        }else  
+          System.out.println("string value is not present");  
+    }  
+}  
+
+
+import java.util.Optional;  
+public class OptionalExample {  
+    public static void main(String[] args) {  
+        String[] str = new String[10];        
+        str[5] = "JAVA OPTIONAL CLASS EXAMPLE";  // Setting value for 5th index  
+        // It returns an empty instance of Optional class   
+        Optional<String> empty = Optional.empty();  
+        System.out.println(empty);  
+        // It returns a non-empty Optional  
+        Optional<String> value = Optional.of(str[5]);  
+        // If value is present, it returns an Optional otherwise returns an empty Optional  
+        System.out.println("Filtered value: "+value.filter((s)->s.equals("Abc")));  
+        System.out.println("Filtered value: "+value.filter((s)->s.equals("JAVA OPTIONAL CLASS EXAMPLE")));  
+        // It returns value of an Optional. if value is not present, it throws an NoSuchElementException    
+        System.out.println("Getting value: "+value.get());  
+        // It returns hashCode of the value  
+        System.out.println("Getting hashCode: "+value.hashCode());  
+        // It returns true if value is present, otherwise false  
+        System.out.println("Is value present: "+value.isPresent());  
+        // It returns non-empty Optional if value is present, otherwise returns an empty Optional  
+        System.out.println("Nullable Optional: "+Optional.ofNullable(str[5]));  
+        // It returns value if available, otherwise returns specified value,  
+        System.out.println("orElse: "+value.orElse("Value is not present"));  
+        System.out.println("orElse: "+empty.orElse("Value is not present"));  
+        value.ifPresent(System.out::println);   // printing value by using method reference   
+    }  
+}  
+

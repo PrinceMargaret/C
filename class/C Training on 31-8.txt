@@ -1,0 +1,167 @@
+   10  -> 20 -> 80 -> 30 -> 90 -> 70 -> 40 -> 60
+   fst 
+
+  for(pptr=fst; pptr->next!=NULL;pptr=pptr->next)
+  {
+     for(curr = pptr->next;curr!=NULL;curr = curr=curr->next)
+     {
+        if(pptr->x > curr->x) // if 1st node value greater then 2nd node value then swap it.
+        {
+           n = pptr->x;
+           pptr->x = curr->x;
+           curr->x = n;
+        }
+     }
+  }
+
+  for structure type List - 
+
+  Student temp;
+  for(pptr=fst; pptr->next!=NULL;pptr=pptr->next)
+  {
+     for(curr = pptr->next;curr!=NULL;curr = curr=curr->next)
+     {
+        if(pptr->s.roll > curr->s.roll) // if 1st node value greater then 2nd node value then swap it.
+        {
+           temp = pptr->s;
+           pptr->s = curr->s;
+           curr->s = temp;
+        }
+     }
+  }
+
+  - same concept in C++ also - 
+
+    malloc() replace it with new operator    tmp = (struct Node*)malloc(sizeof(struct Node));  -  tmp = new Node(); 
+    free() - replace with delete keyword,    free(curr);   - delete curr; 
+
+   ** other concepts r same. 
+
+  - what about java ? 
+
+  implement linked List in Java we need to design Inner class, replace -> (arrow operator) with . operator & don't write
+  delete node memory (with delete or free() in C & C++) algo, bcos java ke inside jitne object unreferenciate honge wo 
+  saare auto matically garbage collector ko mil kayega. 
+
+
+class LinkedList
+{
+   class Node
+   {
+      int x;
+      Node next;
+   }
+   Node fst=null,tmp,curr;
+   void addFirst(int data)
+   {
+
+   }
+}
+
+
+ in C & C++ - we need to design Data structure & use it. but in java we have pre define data structure that is known as
+ Collection Framework. in Collection we have - List + Set + Queue + Map Interfaces.
+
+   List + Set + Queue inherit with Collection Interface, but Map not inherit with Collection interfaces, means Map is
+   the Part of Collection Framework but not part of the Collection Interface, bcos Map Add elements with keyname, but
+   other collection classes work with keyindex. 
+
+   work with key name - kya - kya hai jo key name pe work karta hai.  (map - value map with key name)
+
+
+          Map - HashMap(unordered) + TreeMap - Ordered Collection. - both r the unsynchronized collection classes
+                Hashtable - Unordered Collection + synchronized collection classes
+                Properties - Properties class also the child of Hashtable class.(Major Use in Project Development)
+                             bcos config of Database Connectivity + Spring Boot config define in Properties file.
+                   Project - DB.properties / Spring boot - Application.properties - contain all Spring boot config. 
+
+         Attributes in Web Application - Servlets + JSP + Spring + Spring Boot + Struts they also r with keyname.
+                req.setAttribute("id",uid); / ses.setAttribute("id",uid); ctx.setAttribute("id",uid); 
+                String s = (String)req/sess/ctx.getAttribute("id");
+
+
+ Algo - ratna hai - 
+
+     1. how to add new node with LIFO + FIFO method 
+     2. how to delete Node from List - from any where. (from starting / mid / end.) 
+     3. how to add Node in Mid of List - before & after particular Node.
+     4. Sorting with List.
+     5. String handling in C - with or without library function. - with library or without library function . 
+     6. Collection Archi in Java - Heart of Java - Without Collection Framework apka Interview nahi niklega. 
+            Collection Framework + String handling + diff b/w jdk 1.5 , 1.6, 1.7 , 1.8 , 1.9
+         work on JDK1.8 , bcos from jdk1.9 Java is a Paid software. 
+
+ diff b/w C & C++ excluding OOPs Concept?   
+
+			C 				C++
+ * main() in C - user define                 * pre define.
+ * we can't declare variable in loops.       * we can declare var in loop  - for(int a = 1; a<=10;a++) 
+ * memory allocation - functions             * keywords - new & delete 
+     malloc() + calloc() + free() + realloc()
+   tmp = (struct Node*) malloc(sizeof(tmp));       tmp = new Node();
+ * need of type def                          * no need of type def. 
+     struct Node *tmp;                             Node *tmp;
+ * File handling - FILE Type Pointer var     * Streams - ifstream, ofstream, fstream. 
+ * we can't declare function in C Structure  * we can't declare function in C Structure.
+ * Memory Addresses - Unsigned Long          * memory Address in C++ & Java - Hexa decimal format.
+ 
+   5 Diff - aap log kal bayena. 
+
+    char ar[10];  - we can store 10 chars in ar array.
+
+   but now we want to store names with max 20 chars per name. 
+
+     char ar[10][20]; - 10 name honge & har name ke inside max 20 chars honge, that is fixed, if name contain < 20 
+                        chars but memory allocate for all 20 chars. 
+
+     char *ar[10];  - 10 names honge. size fixed nahi hai that is dynamic. 
+
+ C Data structure - C is a kind of procedural Language, there is no concept of Inheritance & all. 
+
+ Java - Java is a True OO Programing, but not 100%. 
+
+   Abstract Design patterns - project Standard - 
+
+    Prototype of Methods - define in Interface 
+    Definition of methods - define inside class & use it with/without direct or indirect instance. 
+
+import java.util.*;
+class AList
+{
+   public static void main(String aa[])
+   {
+      List<String> a = new ArrayList<>(); // indirect instance - Parent class object can hold the ref of child class object.
+      Set<String> s = new HashSet<>(); // indirect instance. 
+      Map<String,String> m = new HashMap<>(); // indirect instance. 
+      
+
+   }
+}
+
+  In Collection Framework we have classes & interfaces - 
+
+
+						(Collection)
+
+		(List)                         Set                            (Queue)         
+        contain duplicate elements      unique collection 			 PriorityQueue -> (Deque)
+								           (singled ended Queue)      ArrayDeque 
+												    (Double ended Queue)
+  ArrayList   LinkedList     Vector       HashSet      TreeSet
+                               Stack     (unordered)  (ordere)
+
+
+		      Map 
+      HashMap              TreeMap         Hashtable
+						-> Properties 
+
+  Collection Framework in Java 
+
+
+       
+
+
+ 
+
+
+ 
